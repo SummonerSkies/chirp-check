@@ -1,1 +1,1 @@
-gunicorn chirp_check.wsgi
+web: gunicorn chirp_check.wsgi
