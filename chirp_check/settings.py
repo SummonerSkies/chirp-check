@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-summonerskie-chirpcheck-3yrmncd34fa.ws.codeinstitute-ide.net'
+ALLOWED_HOSTS = ['8000-summonerskie-chirpcheck-3yrmncd34fa.ws.codeinstitute-ide.net',
                 'chirp-check-ddace85f08c7.herokuapp.com']
 
 
