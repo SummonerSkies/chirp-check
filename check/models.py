@@ -16,25 +16,3 @@ class Checklist(models.Model):
 
     def __str__(self):
         return self.list_name
-
-class Bird(models.Model):
-    """
-    Represents information about bird(s) being added to the checklist.
-    """
-    bird_name = models.CharField(max_length=100, blank=False, Unique=True,)
-    status = models.CharField(
-        max_length=8,
-        default="Not Seen",
-        choices=[
-            ("Not Seen", "Not Seen"),
-            ("Spotted", "Spotted"),
-        ],
-        help_text="Did you see any?"
-            "(choices: Not Seen, Spotted)"
-    )
-    number_seen = models.IntegerField(default=0)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    check_list = models.ForeignKey(Checklist)
-
-    def __str__(self):
-        return self.bird_name
