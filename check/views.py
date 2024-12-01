@@ -1,9 +1,28 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+# chirp_check/check/views.py
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.views.generic import TemplateView, ListView
+from .models import Bird, Checklist
+from .forms import BirdForm, ChecklistForm
 
 # Create your views here.
 class HomePage(TemplateView):
     """
     Displays the Chirp Check home page
     """
-    template_name = 'index.html'
+    template_name = 'base.html'
+
+class ChecklistView():
+    """
+    View for the Checklist model.
+    """
+    model = Checklist
+    template_name =
+
+
+class BirdView():
+    """
+    View for Birds model.
+    """
+    model = Bird
+    template_name =
