@@ -12,17 +12,17 @@ class HomePage(TemplateView):
     """
     template_name = 'base.html'
 
-class ChecklistView():
+class ChecklistView(ListView):
     """
     View for the Checklist model.
     """
     model = Checklist
-    template_name =
+    template_name ="check/index.html"
 
 
-class BirdView():
-    """
-    View for Birds model.
-    """
-    model = Bird
-    template_name =
+# class BirdView(ListView):
+#     """
+#     View for Birds model.
+#     """
+#     model = Bird
+#     template_name =""

@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <h1>Website in progress! Check back soon.</h1>
+    <div>
+        <h1 onclick="location.href='{% url "index" %}'">
+            Bird Watching Checklist!
+        </h1>
+    </div>
+    <div>
+        {% block content %}
+        This placeholder content will be replaced with different html code for each page.
+        {% endblock %}
+    </div>
 </body>
 
 </html>
