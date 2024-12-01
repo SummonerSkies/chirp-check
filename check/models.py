@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Checklist(models.Model):
@@ -39,9 +40,14 @@ class Bird(models.Model):
     check_list = models.ForeignKey(Checklist, on_delete=models.CASCADE)
 
     class Meta:
+        """
+        This code checks the checklist to see if a bird is already present.
+        If it a unique sighting, a new entry can be created.
+        If the bird is already present, new sightings are added to the existing entry.
+        """
         constraints = [
             models.UniqueConstraint(fields=['bird_name', 'check_list'], name='unique_bird_per_checklist')
         ]
 
     def __str__(self):
-        return self.bird_name 
+        return self.bird_name
