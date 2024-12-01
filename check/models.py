@@ -16,7 +16,7 @@ class Checklist(models.Model):
         ordering = ["-created_on"]
 
     def get_absolute_url(self):
-        return reverse("list_name", args=[self.id])
+        return reverse("check", args=[self.id])
 
     def __str__(self):
         return self.list_name
