@@ -27,3 +27,15 @@ class BirdView(generic.ListView):
     """
     queryset = Bird.objects.all()
     template_name ="check/index.html"
+
+"""
+Create a new checklist
+"""
+
+"""
+Add a bird
+"""
+
+"""
+Delete a new checklist
+"""

@@ -6,7 +6,6 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Checklist-->
-        <h1>Checklist</h1>
         {% for checklist in object_list %}
         <h2>{{checklist.list_name}}</h2>
         <p>Created By: {{checklist.user}}</p>
@@ -17,14 +16,13 @@
     <div class="row">
         <!-- Bird -->
         <h2>Birds!</h2>
-        {% for bird in object_list %}
-        <p>Species: {{bird.bird_name}}</p>
-        <p>Did You See Any? {{bird.status}}</p>
-        <p>How Many? {{bird.number_seen}}</p>
+        {% for birds in object_list %}
+        <p>Species: {{birds.bird_name}}</p>
+        <p>Did You See Any? {{birds.status}}</p>
+        <p>How Many? {{birds.number_seen}}</p>
         {% endfor %}     
     </div>
 </div>
-
 
 <!-- index.html content ends here -->
 {% endblock %}
