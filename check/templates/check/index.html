@@ -4,15 +4,15 @@
 
 <!-- index.html content starts here -->
 <div class="container-fluid">
-    <div class="row center">
-            <!-- Checklist-->
-            <h1>Checklist</h1>
-            {% for checklist in object_list %}
-            <h2>{{checklist.list_name}}</h2>
-            <p>Created By: {{checklist.user}}</p>
-            <p>Date: {{checklist.created_on}}</p>
-            <p>Birds Sighted At: {{checklist.description}}</p>
-            {% endfor %}     
+    <div class="row">
+        <!-- Checklist-->
+        <h1>Checklist</h1>
+        {% for checklist in object_list %}
+        <h2>{{checklist.list_name}}</h2>
+        <p>Created By: {{checklist.user}}</p>
+        <p>Date: {{checklist.created_on}}</p>
+        <p>Birds Sighted At: {{checklist.description}}</p>
+        {% endfor %}     
     </div>
     <div class="row">
         <!-- Bird -->
@@ -22,7 +22,7 @@
         <p>Did You See Any? {{bird.status}}</p>
         <p>How Many? {{bird.number_seen}}</p>
         {% endfor %}     
-</div>
+    </div>
 </div>
 
 
