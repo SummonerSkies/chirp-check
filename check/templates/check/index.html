@@ -4,11 +4,25 @@
 
 <!-- index.html content starts here -->
 <div class="container-fluid">
-    <div class="column">
-
-        <h1>This is a place holder.</h1>
-
+    <div class="row center">
+            <!-- Checklist-->
+            <h1>Checklist</h1>
+            {% for checklist in object_list %}
+            <h2>{{checklist.list_name}}</h2>
+            <p>Created By: {{checklist.user}}</p>
+            <p>Date: {{checklist.created_on}}</p>
+            <p>Birds Sighted At: {{checklist.description}}</p>
+            {% endfor %}     
     </div>
+    <div class="row">
+        <!-- Bird -->
+        <h2>Birds!</h2>
+        {% for bird in object_list %}
+        <p>Species: {{bird.bird_name}}</p>
+        <p>Did You See Any? {{bird.status}}</p>
+        <p>How Many? {{bird.number_seen}}</p>
+        {% endfor %}     
+</div>
 </div>
 
 

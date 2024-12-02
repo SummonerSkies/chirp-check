@@ -13,6 +13,7 @@ class ChecklistForm(forms.ModelForm):
         model = Checklist
         fields = ('list_name', 'description')
 
+
 class BirdForm(forms.ModelForm):
     """
     Form class for adding birds to a checklist
