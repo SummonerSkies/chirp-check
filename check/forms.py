@@ -17,7 +17,7 @@ class ChecklistForm(forms.ModelForm):
         }
         labels = {
             'list_name': 'Checklist Name',  # Clarifying what the user should input
-            'description': 'Bird watching location',
+            'description': 'Bird Watching Location',
         }
 
 

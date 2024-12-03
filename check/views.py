@@ -33,9 +33,13 @@ Create a new checklist
 """
 
 """
-Add a bird
+Add a bird to an existing checklist
 """
 
 """
-Delete a new checklist
+Remove a bird from an existing checklist
+"""
+
+"""
+Delete an existing checklist
 """
