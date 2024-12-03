@@ -13,15 +13,13 @@
         <p>Birds Sighted At: {{checklist.description}}</p>
         {% endfor %}     
     </div>
-    <div class="row">
-        <!-- Bird -->
-        <h2>Birds!</h2>
-        {% for birds in object_list %}
-        <p>Species: {{birds.bird_name}}</p>
-        <p>Did You See Any? {{birds.status}}</p>
-        <p>How Many? {{birds.number_seen}}</p>
-        {% endfor %}     
-    </div>
+
+<!-- Things to add:
+If option for 
+    1. message when there's no lists,
+    2. listed view when something is generated. 
+    3. need to take into account when logged in/out. -->
+
 </div>
 
 <!-- index.html content ends here -->

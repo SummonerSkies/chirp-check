@@ -12,6 +12,13 @@ class ChecklistForm(forms.ModelForm):
         """
         model = Checklist
         fields = ('list_name', 'description')
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3}),
+        }
+        labels = {
+            'list_name': 'Checklist Name',  # Clarifying what the user should input
+            'description': 'Bird watching location',
+        }
 
 
 class BirdForm(forms.ModelForm):
@@ -24,3 +31,12 @@ class BirdForm(forms.ModelForm):
         """
         model = Bird
         fields = ('bird_name', 'status', 'number_seen', 'check_list')
+    # Hide check_list field as it should already be associated with the checklist
+		widgets = {
+            	'check_list': forms.HiddenInput(),
+		}
+		labels = {
+			'bird_name': 'Name of Bird',
+			'status': 'Did You See It?',  
+			'number_seen': 'Number of Birds Seen'
+		}
