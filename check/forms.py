@@ -32,10 +32,10 @@ class BirdForm(forms.ModelForm):
         model = Bird
         fields = ('bird_name', 'status', 'number_seen', 'check_list')
     # Hide check_list field as it should already be associated with the checklist
-		widgets = {
-            	'check_list': forms.HiddenInput(),
-		}
-		labels = {
+        widgets = {
+            'check_list': forms.HiddenInput(),
+        }
+        labels = {
 			'bird_name': 'Name of Bird',
 			'status': 'Did You See It?',  
 			'number_seen': 'Number of Birds Seen'
