@@ -53,13 +53,16 @@ class BirdView(generic.ListView):
 Create a new checklist
 """
 def create_checklist(request):
+    form = ChecklistForm()
     if request.method == 'POST':
         form = ChecklistForm(request.POST)
         if form.is_valid():
             # Save new checklist to database
-            form.save()
+            checklist = form.save(commit=False)
+            checklist.user = request.user
+            checklist.save
             # Redirect to a checklist list or another page
-            return redirect('checklist_list')
+            return redirect('chirpcheck:checklist')
     else:
         # GET request
         form = ChecklistForm()
