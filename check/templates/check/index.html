@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% url "chirpcheck:create" as create_url %}
 {% block content %}
 
 <!-- index.html content starts here -->
@@ -12,13 +13,16 @@
         <div
             role="button"
             onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-            {{ checklist.list_name }}            
+            {{ checklist.list_name }}          
         </div>
     </li>
     {% empty %}
     <h4>You have no lists!</h4>
     {% endfor %}
 </ul>
+
+<a href="{% url 'chirpcheck:create' %}"><button>Click here to Make a New Watchlist!</button></a>
+
 
 <!-- Things to add:
 If option for 

@@ -58,15 +58,36 @@ def create_checklist(request):
         checklist_form = ChecklistForm(request.POST)
         if checklist_form.is_valid():
             # Save new checklist to database
-            checklist_form = checklist_form.save(commit=False)
-            checklist_form.user = request.user
-            checklist_form.save
+            checklist = checklist_form.save(commit=False)
+            checklist.user = request.user
+            checklist.save()
             # Redirect to a checklist list or another page
-            return redirect('chirpcheck:checklist')
+            return redirect('chirpcheck:checklist', checklist.id)
     else:
         # GET request
         checklist_form = ChecklistForm()
     return render(request, 'check/create_checklist.html', {'checklist_form': checklist_form})
+
+
+"""
+Edit an existing checklist
+"""
+def edit_checklist(request, id):
+    checklist = get_object_or_404(Checklist, id=id)
+    
+    if request.method == 'POST':
+        checklist_form = ChecklistForm(request.POST, instance=checklist)
+        if checklist_form.is_valid():
+            # Save the updated checklist to the database
+            checklist = checklist_form.save(commit=False)
+            checklist.user = request.user
+            checklist.save()
+	        # Redirect to the updated checklist detail page or checklist list
+            return redirect('chirpcheck:checklist', checklist.id)
+    else:
+        checklist_form = ChecklistForm(instance=checklist)
+    
+    return render(request, 'check/edit_checklist.html', {'checklist_form': checklist_form, 'checklist': checklist})
 
 
 """
