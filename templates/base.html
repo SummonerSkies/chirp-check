@@ -1,4 +1,5 @@
 {% load static %}
+{% url 'chirpcheck:index' as index_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +31,7 @@
 <!-- Content Section, linked to templates -->
 <main class="content">
     <div>
-        <h1 onclick="location.href='{% url 'index' %}'">
+        <h1 onclick="location.href='{% url 'chirpcheck:index' %}'">
         <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i> Bird Watching Checklist! <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i>
         </h1>
     </div>

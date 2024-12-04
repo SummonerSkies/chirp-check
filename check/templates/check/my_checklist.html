@@ -1,11 +1,12 @@
 <!-- todo_list/todo_app/templates/todo_app/todo_list.html -->
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div>
     <div>
         <div>
-            <h3>Edit list:</h3>
+            <h3>Edit Bird Checklist:</h3>
             <h5>{{ check_list.list_name | upper }}</h5>
         </div>
         <ul>

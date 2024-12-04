@@ -7,12 +7,12 @@
 <h3>My Bird Watchlists!</h3>
 {% endif %}
 <ul>
-    {% for Checklist in object_list %}
+    {% for checklist in object_list %}
     <li>
         <div
             role="button"
-            onclick="location.href='{% url 'index' %}'">
-            {{ Checklist.list_name }}            
+            onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
+            {{ checklist.list_name }}            
         </div>
     </li>
     {% empty %}

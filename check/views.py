@@ -20,25 +20,34 @@ class ChecklistView(generic.ListView):
     queryset = Checklist.objects.all()
     template_name ="check/index.html"
 
-class ListChecklistView(generic.ListView):
-    model = Checklist
-    template_name = "check/my_checklist.html"
+# class MyChecklistView(generic.ListView):
+#     model = Checklist
+#     template_name = "check/my_checklist.html"
 
-    def get_queryset(self):
-        return Checklist.objects.filter(checklist_list_id=self.kwargs["checklist_id"])
+#     def get_queryset(self):
+#         return Checklist.objects.filter(checklist_list_id=self.kwargs["checklist_id"])
     
-    def get_context_data(self):
-        context = super().get_context_data()
-        context["check_list"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
-        return context
+#     def get_context_data(self):
+#         context = super().get_context_data()
+#         context["check_list"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
+#         return context
 
+def my_checklist(request, id):
+    checklist = get_object_or_404(Checklist, id=id)
+    context = {'checklist':checklist,}
+    return render(
+        request, "check/my_checklist.html", context,
+    )
 
+"""
+IGNORE EVERYTHING BELOW HERE - REWRITING
+"""
 class BirdView(generic.ListView):
     """
     View for Birds model.
     """
     queryset = Bird.objects.all()
-    template_name ="check/index.html"
+    template_name =""
 
 """
 Create a new checklist
