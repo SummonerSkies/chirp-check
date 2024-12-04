@@ -16,7 +16,7 @@ class ChecklistForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'rows': 3}),
         }
         labels = {
-            'list_name': 'Checklist Name',  # Clarifying what the user should input
+            'list_name': 'Checklist Name',
             'description': 'Bird Watching Location',
         }
 
@@ -31,7 +31,7 @@ class BirdForm(forms.ModelForm):
         """
         model = Bird
         fields = ('bird_name', 'status', 'number_seen', 'check_list')
-    # Hide check_list field as it should already be associated with the checklist
+    # Hide check_list field as this form should already be associated with the checklist
         widgets = {
             'check_list': forms.HiddenInput(),
         }

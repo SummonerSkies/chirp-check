@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Page Title -->
-    <title>Django-Setup</title>
+    <title>Chirp Check! The Birdwatching Checklist App!</title>
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -17,7 +17,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="content">
+<body>
+
+<!-- Header Section -->
+<header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url '' %}">Checklists</a></li>
+            <li><a href="{% url '' %}">Create New Checklist</a></li>
+            <li><a href="{% url 'sign_in' %}">Login</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Content Section, linked to templates -->
+<main class="content">
     <div>
         <h1>
             <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i> Bird Watching Checklist! <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i>
@@ -28,7 +44,11 @@
         <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
         {% endblock %}
     </div>
+</main>
 
+<footer>
+    {% block copyright %}&copy; 2024 Chirp Check. All rights reserved.
+</footer>
 </body>
 
 </html>
