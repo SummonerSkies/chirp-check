@@ -20,7 +20,7 @@ class ChecklistView(generic.ListView):
     queryset = Checklist.objects.all()
     template_name ="check/index.html"
 
-class ListChecklistView(ListView):
+class ListChecklistView(generic.ListView):
     model = Checklist
     template_name = "check/my_checklist.html"
 
@@ -29,7 +29,7 @@ class ListChecklistView(ListView):
     
     def get_context_data(self):
         context =  super().get_context_data()
-        context["check_list"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
+        context["checklist"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
         return context
 
 
