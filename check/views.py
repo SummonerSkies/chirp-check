@@ -28,8 +28,8 @@ class ListChecklistView(generic.ListView):
         return Checklist.objects.filter(checklist_list_id=self.kwargs["checklist_id"])
     
     def get_context_data(self):
-        context =  super().get_context_data()
-        context["checklist"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
+        context = super().get_context_data()
+        context["check_list"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
         return context
 
 
