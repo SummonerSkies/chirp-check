@@ -3,17 +3,22 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-
-<div class="container-fluid">
-    <div class="row">
-        <!-- Checklist-->
-        {% for checklist in object_list %}
-        <h2>{{checklist.list_name}}</h2>
-        <p>Created By: {{checklist.user}}</p>
-        <p>Date: {{checklist.created_on}}</p>
-        <p>Birds Sighted At: {{checklist.description}}</p>
-        {% endfor %}     
-    </div>
+{% if object_list %}
+<h3>My Bird Watchlists!</h3>
+{% endif %}
+<ul>
+    {% for Checklist in object_list %}
+    <li>
+        <div
+            role="button"
+            onclick="location.href='{% url 'index' %}'">
+            {{ Checklist.list_name }}
+        </div>
+    </li>
+    {% empty %}
+    <h4>You have no lists!</h4>
+    {% endfor %}
+</ul>
 
 <!-- Things to add:
 If option for 
@@ -22,6 +27,7 @@ If option for
     3. need to take into account when logged in/out. -->
 
 </div>
-
+{% endblock %}
 <!-- index.html content ends here -->
-{% block copyright %}&copy; 2024 Chirp Check. All rights reserved.{% endblock %}
+{% block copyright %}&copy; 2024 Chirp Check. All rights reserved.
+{% endblock %}

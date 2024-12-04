@@ -7,11 +7,11 @@ from .models import Bird, Checklist
 from .forms import BirdForm, ChecklistForm
 
 # Create your views here.
-class HomePage(generic.TemplateView):
-    """
-    Displays the Chirp Check home page
-    """
-    template_name = 'base.html'
+# class HomePage(generic.TemplateView):
+#     """
+#     Displays the Chirp Check home page
+#     """
+#     template_name = 'base.html'
 
 class ChecklistView(generic.ListView):
     """
@@ -19,6 +19,18 @@ class ChecklistView(generic.ListView):
     """
     queryset = Checklist.objects.all()
     template_name ="check/index.html"
+
+class ListChecklistView(ListView):
+    model = Checklist
+    template_name = "check/my_checklist.html"
+
+    def get_queryset(self):
+        return Checklist.objects.filter(checklist_list_id=self.kwargs["checklist_id"])
+    
+    def get_context_data(self):
+        context =  super().get_context_data()
+        context["check_list"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
+        return context
 
 
 class BirdView(generic.ListView):

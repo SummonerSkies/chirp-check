@@ -1,0 +1,36 @@
+<!-- todo_list/todo_app/templates/todo_app/todo_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <div>
+        <div>
+            <h3>Edit list:</h3>
+            <h5>{{ check_list.list_name | upper }}</h5>
+        </div>
+        <ul>
+            {% for check_list in object_list %}
+            <li>
+                <div>
+                    <div
+                        role="button"
+                        onclick="location.href='#'">
+                        {{ check_list.list_name }}
+                        Birds Sighted at {{ check_list.description }}
+                        (Created: {{ check_list.created_on | date:"l, F j" }})
+                    </div>
+                </div>
+            </li>
+            {% empty %}
+            <p>There are no birds in this list yet!</p>
+            {% endfor %}
+        </ul>
+        <p>
+            <input
+                value="Add a bird"
+                type="button"
+                onclick="location.href='#'" />
+        </p>
+    </div>
+</div>
+{% endblock %}
