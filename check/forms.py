@@ -1,6 +1,7 @@
 from django import forms
-from .models import Bird
-from .models import Checklist
+from .models import Bird, Checklist
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 class ChecklistForm(forms.ModelForm):
     """
@@ -19,6 +20,12 @@ class ChecklistForm(forms.ModelForm):
             'list_name': 'Checklist Name',
             'description': 'Bird Watching Location',
         }
+        
+    def __init__(self, *args, **kwargs):
+        super(ChecklistForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.add_input(Submit('submit', 'Create Checklist'))
 
 
 class BirdForm(forms.ModelForm):
