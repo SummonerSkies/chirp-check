@@ -31,21 +31,33 @@
                         <span class="not-seen">Not Seen</span>
                     {% endif %}
                 </span>
-                
+
                 <!-- Add Number Seen field only when Spotted -->
-                <div id="number-seen-{{ bird.id }}" class="number-seen">
-                    {% if bird.status == "Spotted" %}
-                        <input type="number" value="{{ bird.number_seen }}" min="1" id="count-input-{{ bird.id }}">
-                    {% endif %}
+                <div id="number-seen-{{ bird.id }}" class="number-seen" {% if bird.status == "Not Seen" %}style="display: none;"{% endif %}>
+                    <input type="number" value="{{ bird.number_seen }}" min="0" id="count-input-{{ bird.id }}">
                 </div>
 
                 <!-- Button to toggle bird status -->
-                <button class="toggle-status-btn button-seen" onclick="toggleStatus({{ bird.id }})">
-                    I saw one!
+                <button class="toggle-status-btn button-seen" onclick="toggleStatus({{ bird.id }})" id="toggle-btn-{{ bird.id }}">
+                    {% if bird.status == "Spotted" %}
+                        Mark as Not Seen
+                    {% else %}
+                        Mark as Spotted
+                    {% endif %}
                 </button>
 
-                <!-- Button to delete bird from checklist -->
+                <!-- Form to update the number of birds seen -->
+                <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="number" name="number_seen" id="count-input-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
+                    <button type="submit">Update</button>
+                </form>
 
+                <!-- Button to delete bird from checklist -->
+                <form method="POST" action="{% url 'chirpcheck:delete_bird' checklist.id bird.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete Bird</button>
+                </form>
             </div>
         </li>
         {% empty %}

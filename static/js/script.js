@@ -1,26 +1,29 @@
 // ADDING BIRD TO EXISTING CHECKLIST
 
 // Function to toggle visibility of the "Number Seen" input based on the status
-function toggleNumberSeen(birdId) {
-    var statusSelect = document.getElementById('status_' + birdId);
-    var numberSeenDiv = document.getElementById('number_seen_' + birdId);
-    var numberSeenInput = document.getElementById('number_seen_input_' + birdId);
+function toggleStatus(birdId) {
+    const statusSpan = document.getElementById('status-' + birdId);
+    const countDiv = document.getElementById('number-seen-' + birdId);
+    const countInput = document.getElementById('count-input-' + birdId);
+    const status = statusSpan.querySelector('span');
+    
+    // Toggle the status between "Spotted" and "Not Seen"
+    if (status.classList.contains('not-seen')) {
+        // Change to "Spotted"
+        status.classList.remove('not-seen');
+        status.classList.add('spotted');
+        status.innerText = 'Spotted';
 
-    // Show or hide the 'Number Seen' field based on status
-    if (statusSelect.value === "Spotted") {
-        numberSeenDiv.style.display = "block";  // Show the field
-        numberSeenInput.disabled = false;      // Enable the input
+        // Show the number_seen input
+        countDiv.style.display = 'block';
     } else {
-        numberSeenDiv.style.display = "none";   // Hide the field
-        numberSeenInput.disabled = true;       // Disable the input
+        // Change to "Not Seen"
+        status.classList.remove('spotted');
+        status.classList.add('not-seen');
+        status.innerText = 'Not Seen';
+
+        // Hide the number_seen input
+        countDiv.style.display = 'none';
+        countInput.value = 0;  // Reset count
     }
 }
-
-// Ensure that each bird's status field is correctly initialized when the page loads
-document.addEventListener("DOMContentLoaded", function() {
-    var allStatusSelects = document.querySelectorAll('.status-select');
-    allStatusSelects.forEach(function(select) {
-        var birdId = select.id.split('_')[1]; // Extract bird ID from the select element's ID
-        toggleNumberSeen(birdId);  // Initialize the visibility based on current status
-    });
-});

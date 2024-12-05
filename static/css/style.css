@@ -61,3 +61,11 @@ footer {
 .button-seen {
   margin-top: 10px;
 }
+
+.toggle-status-btn {
+  transition: opacity 0.3s ease;
+}
+
+.toggle-status-btn.faded {
+  opacity: 0.5;
+}

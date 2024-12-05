@@ -131,8 +131,7 @@ def add_bird(request, checklist_id):
                 request, f'Your bird sighting has been saved for {bird_name}!'
                 )
             return redirect(
-                'chirpcheck:my_checklist', 
-                checklist_id=checklist.id
+                'chirpcheck:checklist', checklist_id=checklist.id
                 )
 
     return render(
@@ -141,6 +140,36 @@ def add_bird(request, checklist_id):
         {'bird_form': bird_form, 'checklist': checklist}
         )
 
+
+"""
+Update the bird 'status' and 'number_seen'
+"""
+def update_bird(request, checklist_id, bird_id):
+    bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
+    
+    if request.method == "POST":
+        status = request.POST.get('status')
+        number_seen = request.POST.get('number_seen')
+        
+        bird.status = status
+        bird.number_seen = number_seen
+        bird.save()
+
+        messages.success(request, f'Your sighting of {bird.bird_name} has been updated!')
+        return redirect('chirpcheck:checklist', id=checklist_id)
+    
+    return redirect('chirpcheck:checklist', id=checklist_id)
+
 """
 Remove a bird from an existing checklist
 """
+def delete_bird(request, checklist_id, bird_id):
+    bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
+    
+    if request.method == "POST":
+        bird.delete()
+        messages.success(request, f'{bird.bird_name} has been deleted from your checklist.')
+        return redirect('chirpcheck:checklist', id=checklist_id)
+
+    return redirect('chirpcheck:checklist', id=checklist_id)
+    
