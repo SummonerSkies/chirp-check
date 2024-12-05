@@ -20,7 +20,8 @@ class ChecklistView(generic.ListView):
     
 def my_checklist(request, id):
     checklist = get_object_or_404(Checklist, id=id)
-    context = {'checklist':checklist,}
+    birds = Bird.objects.filter(check_list=checklist)
+    context = {'checklist': checklist, 'birds': birds}
     return render(
         request, "check/my_checklist.html", context,
     )
@@ -92,43 +93,54 @@ def delete_checklist(request, id):
 
     return render(request, 'check/confirm_checklist_delete.html', {'checklist': checklist})
 
-
-
-"""
-IGNORE EVERYTHING BELOW HERE - REWRITING
-"""
-
 """
 Add a bird to an existing checklist
 """
-def add_bird_to_checklist(request, checklist_id):
+def add_bird(request, checklist_id):
     checklist = get_object_or_404(Checklist, id=checklist_id)
 
+    # Starting the Birdform BEFORE checking the request method
+    bird_form = BirdForm(initial={'check_list': checklist.id})
+
+    # Using the form with POST data
     if request.method == 'POST':
-        form = BirdForm(request.POST)
-        if form.is_valid():
-            # Associate the bird with the current checklist
-            # 1. don't save yet
-            bird = form.save(commit=False)
-            # 2. Set the checklist for this bird
-            bird.check_list = checklist
-            #  3. save bird with the associated checklist
-            bird.save()
-            # 4. Redirect to the checklist detail page
-            return redirect('checklist_detail', checklist_id=checklist.id)
-    else:
-        form = BirdForm()
+        bird_form = BirdForm(request.POST)  
+        if bird_form.is_valid():
+            bird_name = bird_form.cleaned_data['bird_name']
+            status = bird_form.cleaned_data['status']
+            number_seen = bird_form.cleaned_data['number_seen']
+                        
+            # A check to see if the bird exists in the checklist
+            bird, created = Bird.objects.get_or_create(
+                bird_name=bird_name,
+                check_list=checklist,
+                defaults={
+                    'status': status, 
+                    'number_seen': number_seen,
+                    'user': request.user
+                    }
+            )
+            
+            if not created:
+                # If bird already exists, update its status and number seen
+                bird.status = status
+                bird.number_seen += number_seen  # Add to existing number seen
+                bird.save()
+            
+            messages.success(
+                request, f'Your bird sighting has been saved for {bird_name}!'
+                )
+            return redirect(
+                'chirpcheck:my_checklist', 
+                checklist_id=checklist.id
+                )
 
     return render(
         request,
-        'add_bird.html', 
-        {'form': form, 'checklist': checklist}
+        'check/add_bird.html', 
+        {'bird_form': bird_form, 'checklist': checklist}
         )
 
 """
 Remove a bird from an existing checklist
-"""
-
-"""
-Delete an existing checklist
 """

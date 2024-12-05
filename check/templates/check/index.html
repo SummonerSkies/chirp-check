@@ -5,7 +5,7 @@
 
 <!-- index.html content starts here -->
 {% if object_list %}
-<h3>My Bird Watchlists!</h3>
+<h3>My Chirp Checklists!</h3>
 {% endif %}
 <ul>
     {% for checklist in object_list %}
@@ -13,12 +13,10 @@
         <div
             role="button"
             onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-            <p>{{ checklist.list_name }} @ {{ checklist.description }}</p>
+            <h4>{{ checklist.id }}: {{ checklist.list_name }}</h4>
         </div>
         <div>
             <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button>Edit</button></a>
-        </div>
-        <div>
             <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}"><button>Delete</button></a>
         </div>
     </li>
@@ -27,7 +25,7 @@
     {% endfor %}
 </ul>
 
-<a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a>
+<p><a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a></p>
 
 
 <!-- Things to add:

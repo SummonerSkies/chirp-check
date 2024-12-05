@@ -1,11 +1,17 @@
 h1 {
-    color: indigo;
-    }
+  color: indigo;
+}
 
 .content {
-    max-width: 750px;
+    max-width: 700px;
     margin: auto;
     }
+
+.my_check_list {
+  align-content: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
 
 main {
   /* Make main element take up any surplus space to push footer down */
@@ -21,7 +27,7 @@ div {
   margin: 1em;
 }
 
-ul {
+li {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -35,4 +41,23 @@ footer {
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
+}
+
+/* birds number_seen styling */
+
+.number-seen {
+  display: none;  /* Initially hidden */
+}
+
+.number-seen input {
+  width: 50px;
+  padding: 5px;
+}
+
+.status-select {
+  padding: 5px;
+}
+
+.button-seen {
+  margin-top: 10px;
 }
