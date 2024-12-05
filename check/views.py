@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
-from django.views import generic
+from django.contrib import messages
+from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.urls import reverse
+from django.views import generic
 
 # importing 
 from .models import Bird, Checklist
@@ -43,6 +45,7 @@ def create_checklist(request):
             checklist.user = request.user
             checklist.save()
             # Redirect to a checklist list or another page
+            messages.add_message(request, messages.SUCCESS, 'Chirp! Your Checklist has been created!')
             return redirect('chirpcheck:checklist', checklist.id)
     else:
         # GET request
@@ -64,11 +67,31 @@ def edit_checklist(request, id):
             checklist.user == request.user
             checklist.save()
 	        # Redirect to the updated checklist detail page or checklist list
+            messages.add_message(request, messages.SUCCESS, 'Your Checklist has been updated!')
             return redirect('chirpcheck:checklist', id=checklist.id)
     else:
         checklist_form = ChecklistForm(instance=checklist)
     
     return render(request, 'check/edit_checklist.html', {'checklist_form': checklist_form, 'checklist': checklist})
+
+"""
+Delete an existing checklist
+"""
+def delete_checklist(request, id):
+    checklist = get_object_or_404(Checklist, id=id)
+
+    # if checklist.user != request.user:
+    #     return HttpResponseForbidden("You are not allowed to delete this checklist.")
+
+    if request.method == 'POST':
+        checklist.delete()
+        messages.add_message(request, messages.SUCCESS, 'Checklist deleted!')
+        return redirect('chirpcheck:index')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own checklist!')
+
+    return render(request, 'check/confirm_checklist_delete.html', {'checklist': checklist})
+
 
 
 """

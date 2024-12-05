@@ -17,8 +17,7 @@
                         Birds Sighted at {{ checklist.description }}
                         (Created: {{ checklist.created_on | date:"l, F j" }})
                     <!-- Button to navigate to the edit page -->
-                        <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}">Edit this checklist</a>
-
+                        <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button>Edit</button> this Checklist</a>
                     </div>
             </li>
             {% empty %}
@@ -32,6 +31,7 @@
                 type="button"
                 onclick="location.href='#'" />
         </p>
+        <p><a href="{% url 'chirpcheck:delete_checklist' checklist.id %}"><button>Delete</button></a> this Checklist</p>
         <p><a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-info">Back to My Checklists</Button></a></p>
     </div>
 </div>

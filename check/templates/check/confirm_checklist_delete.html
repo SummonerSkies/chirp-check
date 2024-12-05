@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h2>Are you sure you want to delete this checklist?</h2>
+<h3>You cannot restore this once it has been deleted!</h3>
+<section>
+<ul>
+    <li>
+        List Name: {{ checklist.list_name }}
+    </li>
+    <li>
+        Location: {{ checklist.description }}
+    </li>
+    <li>
+        Date Created: {{ checklist.created_on }}
+    </li>
+</ul>
+</section>
+
+<section>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes! I want to delete this checklist.</button>
+        </form>
+    </div>
+</section>
+
+<section>
+    <div>
+        <p>I've Changed My Mind. <a href="{% url 'chirpcheck:index' %}"><button>Cancel</button></a></p>
+    </div>
+</section>
+{% endblock %}
