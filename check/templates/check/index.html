@@ -13,7 +13,7 @@
         <div
             role="button"
             onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-            <p>{{ checklist.list_name }}</p>
+            <p>{{ checklist.list_name }} @ {{ checklist.description }}</p>
             <!-- Link to the edit page -->
             <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button>Edit</button></a>
 
@@ -24,7 +24,7 @@
     {% endfor %}
 </ul>
 
-<a href="{% url 'chirpcheck:create' %}"><button>Click here to Make a new checklist!</button></a>
+<a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a>
 
 
 <!-- Things to add:

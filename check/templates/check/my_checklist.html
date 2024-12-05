@@ -4,7 +4,7 @@
 <div>
     <div>
         <div>
-            <h3>Bird Checklist:</h3>
+            <h3>Bird Checklist</h3>
             <h5>{{ check_list.list_name | upper }}</h5>
         </div>
         <ul>
@@ -32,6 +32,7 @@
                 type="button"
                 onclick="location.href='#'" />
         </p>
+        <p><a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-info">Back to My Checklists</Button></a></p>
     </div>
 </div>
 {% endblock %}
