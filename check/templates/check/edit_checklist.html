@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% block content %}
 
 
 <form method="POST">
     {% csrf_token %}
     {{ checklist_form.as_p }}
-    <button type="submit">Save Update!</button>
+    <button type="submit">Save Your Update!</button>
 </form>
 
 {% endblock %}

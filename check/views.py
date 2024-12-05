@@ -23,12 +23,12 @@ def my_checklist(request, id):
         request, "check/my_checklist.html", context,
     )
 
-# class BirdView(generic.ListView):
-#     """
-#     View for Birds model.
-#     """
-#     queryset = Bird.objects.all()
-#     template_name =""
+class BirdView(generic.ListView):
+    """
+    View for Birds model.
+    """
+    queryset = Bird.objects.all()
+    template_name =""
 
 """
 Create a new checklist

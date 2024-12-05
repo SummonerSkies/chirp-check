@@ -13,7 +13,10 @@
         <div
             role="button"
             onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-            {{ checklist.list_name }}          
+            <p>{{ checklist.list_name }}</p>
+            <!-- Link to the edit page -->
+            <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button>Edit</button></a>
+
         </div>
     </li>
     {% empty %}

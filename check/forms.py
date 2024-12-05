@@ -16,10 +16,10 @@ class ChecklistForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'rows': 3}),
         }
-        labels = {
-            'list_name': 'Checklist Name',
-            'description': 'Bird Watching Location',
-        }
+        # labels = {
+        #     'list_name': 'Checklist Name',
+        #     'description': 'Bird Watching Location',
+        # }
         
     def __init__(self, *args, **kwargs):
         super(ChecklistForm, self).__init__(*args, **kwargs)
@@ -39,11 +39,11 @@ class BirdForm(forms.ModelForm):
         model = Bird
         fields = ('bird_name', 'status', 'number_seen', 'check_list')
     # Hide check_list field as this form should already be associated with the checklist
-        widgets = {
-            'check_list': forms.HiddenInput(),
-        }
-        labels = {
-			'bird_name': 'Name of Bird',
-			'status': 'Did You See It?',  
-			'number_seen': 'Number of Birds Seen'
-		}
+        # widgets = {
+        #     'check_list': forms.HiddenInput(),
+        # }
+        # labels = {
+		# 	'bird_name': 'Name of Bird',
+		# 	'status': 'Did You See It?',  
+		# 	'number_seen': 'Number of Birds Seen'
+		# }
