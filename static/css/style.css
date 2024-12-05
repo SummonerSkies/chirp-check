@@ -3,12 +3,36 @@ h1 {
     }
 
 .content {
-    max-width: 600px;
+    max-width: 750px;
     margin: auto;
     }
+
+main {
+  /* Make main element take up any surplus space to push footer down */
+  flex: 1 0 auto;  
+  /* Add margin at top to prevent content from being covered by header */
+  margin-top: 45px;
+  /* Enable flex properties for child elements */
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  margin: 1em;
+}
 
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
 }

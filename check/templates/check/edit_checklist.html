@@ -2,11 +2,24 @@
 {% load static %}
 {% block content %}
 
-
-<form method="POST">
-    {% csrf_token %}
-    {{ checklist_form.as_p }}
-    <button type="submit">Save Your Update!</button>
-</form>
-
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 card mb-8 mt-6">
+        <div class="card-body">
+          <h3>Updating {{ checklist.list_name }}!</h3>
+        </div>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ checklist_form.as_p }}
+                <div style="display: flex; justify-content: center;">
+                    <button type="submit">Save Your Update!</button>
+                </div>
+            </form>
+            <div style="text-align: center;">
+                <a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-info">Back to My Checklists</Button></a>
+            </div>    
+        </div>
+    </div>
+</div>
 {% endblock %}
