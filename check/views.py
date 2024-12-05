@@ -1,17 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # importing 
 from .models import Bird, Checklist
 from .forms import BirdForm, ChecklistForm
 
 # Create your views here.
-# class HomePage(generic.TemplateView):
-#     """
-#     Displays the Chirp Check home page
-#     """
-#     template_name = 'base.html'
 
 class ChecklistView(generic.ListView):
     """
@@ -19,19 +15,7 @@ class ChecklistView(generic.ListView):
     """
     queryset = Checklist.objects.all()
     template_name ="check/index.html"
-
-# class MyChecklistView(generic.ListView):
-#     model = Checklist
-#     template_name = "check/my_checklist.html"
-
-#     def get_queryset(self):
-#         return Checklist.objects.filter(checklist_list_id=self.kwargs["checklist_id"])
     
-#     def get_context_data(self):
-#         context = super().get_context_data()
-#         context["check_list"] = Checklist.objects.get(id=self.kwargs["checklist_id"])
-#         return context
-
 def my_checklist(request, id):
     checklist = get_object_or_404(Checklist, id=id)
     context = {'checklist':checklist,}
@@ -39,15 +23,12 @@ def my_checklist(request, id):
         request, "check/my_checklist.html", context,
     )
 
-"""
-IGNORE EVERYTHING BELOW HERE - REWRITING
-"""
-class BirdView(generic.ListView):
-    """
-    View for Birds model.
-    """
-    queryset = Bird.objects.all()
-    template_name =""
+# class BirdView(generic.ListView):
+#     """
+#     View for Birds model.
+#     """
+#     queryset = Bird.objects.all()
+#     template_name =""
 
 """
 Create a new checklist
@@ -80,15 +61,19 @@ def edit_checklist(request, id):
         if checklist_form.is_valid():
             # Save the updated checklist to the database
             checklist = checklist_form.save(commit=False)
-            checklist.user = request.user
+            checklist.user == request.user
             checklist.save()
 	        # Redirect to the updated checklist detail page or checklist list
-            return redirect('chirpcheck:checklist', checklist.id)
+            return redirect('chirpcheck:checklist', id=checklist.id)
     else:
         checklist_form = ChecklistForm(instance=checklist)
     
     return render(request, 'check/edit_checklist.html', {'checklist_form': checklist_form, 'checklist': checklist})
 
+
+"""
+IGNORE EVERYTHING BELOW HERE - REWRITING
+"""
 
 """
 Add a bird to an existing checklist
