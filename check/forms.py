@@ -16,10 +16,10 @@ class ChecklistForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'rows': 3}),
         }
-        labels = {
-            'list_name': 'Checklist Name',
-            'description': 'Bird Watching Location',
-        }
+        # labels = {
+        #     'list_name': 'Checklist Name',
+        #     'description': 'Bird Watching Location',
+        # }
         
     def __init__(self, *args, **kwargs):
         super(ChecklistForm, self).__init__(*args, **kwargs)
