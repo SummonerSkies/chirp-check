@@ -10,7 +10,7 @@ body {
   display:flex;
   flex-direction:column;
   justify-content:center;
-  min-height:100vh;
+  min-height:75vh;
   max-width: 600px;
 }
 
@@ -24,14 +24,14 @@ body {
   list-style-type: none;
 }
 
-/* main {
+main {
   display: flex;
   flex: 1 0 auto;  
   /* Add margin at top to prevent content from being covered by header */
-  /* margin-top: 45px; */
+  margin-top: 45px;
   /* Enable flex properties for child elements */
-  /* flex-direction: column;
-} */
+  flex-direction: column;
+}
 
 div {
   margin: 1em;
