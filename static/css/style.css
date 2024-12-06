@@ -1,27 +1,37 @@
+/* Header */
+
 h1 {
   color: indigo;
 }
 
+/* Body */
+
+body {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:100vh;
+  max-width: 600px;
+}
+
 .content {
-    max-width: 700px;
     margin: auto;
     }
 
-.my_check_list {
+/* .my_check_list {
   align-content: center;
   justify-content: space-evenly;
   list-style-type: none;
-}
+} */
 
-main {
-  /* Make main element take up any surplus space to push footer down */
+/* main {
+  display: flex;
   flex: 1 0 auto;  
   /* Add margin at top to prevent content from being covered by header */
-  margin-top: 45px;
+  /* margin-top: 45px; */
   /* Enable flex properties for child elements */
-  display: flex;
   flex-direction: column;
-}
+} */
 
 div {
   margin: 1em;
@@ -31,16 +41,6 @@ li {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-evenly;
-  list-style-type: none;
 }
 
 /* birds number_seen styling */
@@ -68,4 +68,14 @@ footer {
 
 .toggle-status-btn.faded {
   opacity: 0.5;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  left: 0;
+  bottom: 0;
+  padding: 20px 0;
+  justify-content: space-evenly;
+  list-style-type: none;
 }

@@ -37,7 +37,7 @@
                     <button type="submit" class="update-status-btn">Update</button>
                     <br />
                     <!-- Number Seen Input -->
-                    Number of {{bird.bird_name}} Seen: <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
+                    Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
                 </form>
 
                 <!-- Button to delete bird from checklist -->
@@ -56,7 +56,7 @@
 <!-- Button to Add a Bird to the checklist -->
 <p>
     <a href="{% url 'chirpcheck:add_bird' checklist.id %}">
-        <button>Add a Bird</button>
+        <button>Add a Bird!</button>
     </a>
 </p>
 
