@@ -18,11 +18,11 @@ body {
     margin: auto;
     }
 
-/* .my_check_list {
+.my_check_list {
   align-content: center;
   justify-content: space-evenly;
   list-style-type: none;
-} */
+}
 
 /* main {
   display: flex;
@@ -30,7 +30,7 @@ body {
   /* Add margin at top to prevent content from being covered by header */
   /* margin-top: 45px; */
   /* Enable flex properties for child elements */
-  flex-direction: column;
+  /* flex-direction: column;
 } */
 
 div {
