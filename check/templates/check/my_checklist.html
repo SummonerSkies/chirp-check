@@ -33,11 +33,11 @@
                         <option value="Spotted" {% if bird.status == "Spotted" %}selected{% endif %}>Spotted</option>
                     </select>
 
-                    <!-- Number Seen Input -->
-                    <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
-
                     <!-- Update Status Button -->
-                    <button type="submit" class="update-status-btn">Update Status</button>
+                    <button type="submit" class="update-status-btn">Update</button>
+                    <br />
+                    <!-- Number Seen Input -->
+                    Number of {{bird.bird_name}} Seen: <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
                 </form>
 
                 <!-- Button to delete bird from checklist -->
