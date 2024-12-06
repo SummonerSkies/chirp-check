@@ -131,7 +131,7 @@ def add_bird(request, checklist_id):
                 request, f'Your bird sighting has been saved for {bird_name}!'
                 )
             return redirect(
-                'chirpcheck:checklist', checklist_id=checklist.id
+                'chirpcheck:checklist', id=checklist.id
                 )
 
     return render(
@@ -144,20 +144,43 @@ def add_bird(request, checklist_id):
 """
 Update the bird 'status' and 'number_seen'
 """
+# def update_bird(request, checklist_id, bird_id):
+#     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
+    
+#     if request.method == "POST":
+#         status = request.POST.get('status')
+#         number_seen = request.POST.get('number_seen')
+        
+#         bird.status = status
+#         bird.number_seen = number_seen
+#         bird.save()
+
+#         messages.success(request, f'Your sighting of {bird.bird_name} has been updated!')
+#         return redirect('chirpcheck:checklist', id=checklist_id)
+    
+#     return redirect('chirpcheck:checklist', id=checklist_id)
+
 def update_bird(request, checklist_id, bird_id):
     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
-    
+
     if request.method == "POST":
+        # Get the status and number_seen from the form submission
         status = request.POST.get('status')
         number_seen = request.POST.get('number_seen')
-        
-        bird.status = status
-        bird.number_seen = number_seen
+
+        # Update bird status and number_seen
+        if status:
+            bird.status = status
+        if number_seen:
+            bird.number_seen = int(number_seen)  # Ensure it's an integer
+
         bird.save()
 
+        # Success message after updating
         messages.success(request, f'Your sighting of {bird.bird_name} has been updated!')
         return redirect('chirpcheck:checklist', id=checklist_id)
-    
+
+    # If not POST (for any other method), just redirect back
     return redirect('chirpcheck:checklist', id=checklist_id)
 
 """

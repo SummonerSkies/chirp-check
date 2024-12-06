@@ -1,29 +1,32 @@
 // ADDING BIRD TO EXISTING CHECKLIST
 
-// Function to toggle visibility of the "Number Seen" input based on the status
+// Function to toggle the bird status between "Spotted" and "Not Seen"
 function toggleStatus(birdId) {
-    const statusSpan = document.getElementById('status-' + birdId);
-    const countDiv = document.getElementById('number-seen-' + birdId);
-    const countInput = document.getElementById('count-input-' + birdId);
-    const status = statusSpan.querySelector('span');
-    
-    // Toggle the status between "Spotted" and "Not Seen"
-    if (status.classList.contains('not-seen')) {
-        // Change to "Spotted"
-        status.classList.remove('not-seen');
-        status.classList.add('spotted');
-        status.innerText = 'Spotted';
+    const statusText = document.getElementById(`status-text-${birdId}`);
+    const countInput = document.getElementById(`count-input-${birdId}`);
+    const numberSeenDiv = document.getElementById(`number-seen-${birdId}`);
+    const toggleButton = document.getElementById(`toggle-btn-${birdId}`);
 
-        // Show the number_seen input
-        countDiv.style.display = 'block';
+    // Toggle status: If it's "Spotted", mark it as "Not Seen", and vice versa
+    if (statusText.innerText === "Spotted") {
+        // Change status to "Not Seen"
+        statusText.innerText = "Not Seen";
+        numberSeenDiv.style.display = "none";  // Hide number seen field
+        countInput.disabled = true;  // Disable input field
+        toggleButton.innerText = "Mark as Spotted";  // Change button text
     } else {
-        // Change to "Not Seen"
-        status.classList.remove('spotted');
-        status.classList.add('not-seen');
-        status.innerText = 'Not Seen';
-
-        // Hide the number_seen input
-        countDiv.style.display = 'none';
-        countInput.value = 0;  // Reset count
+        // Change status to "Spotted"
+        statusText.innerText = "Spotted";
+        numberSeenDiv.style.display = "block";  // Show number seen field
+        countInput.disabled = false;  // Enable input field
+        toggleButton.innerText = "Mark as Not Seen";  // Change button text
     }
 }
+
+// Event listener for the toggle status button
+document.querySelectorAll('.toggle-status-btn').forEach(button => {
+    button.addEventListener('click', function(event) {
+        const birdId = event.target.id.split('-')[2]; // Extract bird ID from the button's ID
+        toggleStatus(birdId);
+    });
+});

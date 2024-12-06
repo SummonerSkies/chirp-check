@@ -16,41 +16,28 @@
 
 <!-- Loop through the birds in this checklist -->
 <section>
-    <h3>Bird Sightings</h3>
+    <h4>My Bird Sightings</h4>
     <ul>
         {% for bird in checklist.bird_set.all %}
         <li>
             <div class="bird-entry">
                 <strong>{{ bird.bird_name }}</strong> 
-                - Status: 
-                <span class="status-toggle" id="status-{{ bird.id }}">
-                    {% if bird.status == "Spotted" %}
-                        <span class="spotted">Spotted</span>
-                        <span class="bird-count" id="bird-count-{{ bird.id }}"> ({{ bird.number_seen }})</span>
-                    {% else %}
-                        <span class="not-seen">Not Seen</span>
-                    {% endif %}
-                </span>
 
-                <!-- Add Number Seen field only when Spotted -->
-                <div id="number-seen-{{ bird.id }}" class="number-seen" {% if bird.status == "Not Seen" %}style="display: none;"{% endif %}>
-                    <input type="number" value="{{ bird.number_seen }}" min="0" id="count-input-{{ bird.id }}">
-                </div>
-
-                <!-- Button to toggle bird status -->
-                <button class="toggle-status-btn button-seen" onclick="toggleStatus({{ bird.id }})" id="toggle-btn-{{ bird.id }}">
-                    {% if bird.status == "Spotted" %}
-                        Mark as Not Seen
-                    {% else %}
-                        Mark as Spotted
-                    {% endif %}
-                </button>
-
-                <!-- Form to update the number of birds seen -->
+                <!-- Dropdown for Status and Number Seen -->
                 <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}" style="display: inline;">
                     {% csrf_token %}
-                    <input type="number" name="number_seen" id="count-input-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
-                    <button type="submit">Update</button>
+                    
+                    <!-- Status Dropdown -->
+                    <select name="status" id="status-{{ bird.id }}">
+                        <option value="Not Seen" {% if bird.status == "Not Seen" %}selected{% endif %}>Not Seen</option>
+                        <option value="Spotted" {% if bird.status == "Spotted" %}selected{% endif %}>Spotted</option>
+                    </select>
+
+                    <!-- Number Seen Input -->
+                    <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
+
+                    <!-- Update Status Button -->
+                    <button type="submit" class="update-status-btn">Update Status</button>
                 </form>
 
                 <!-- Button to delete bird from checklist -->
