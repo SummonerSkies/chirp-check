@@ -7,13 +7,16 @@ class Checklist(models.Model):
     """
     Represents a user-created checklist, including location and date.
     """
-    list_name = models.CharField(max_length=75, blank=False, unique=True, help_text="(Max 75 characters)")
+    list_name = models.CharField(max_length=75, blank=False, unique=False, help_text="(Max 75 characters)")
     description = models.CharField(max_length=200, blank=False, unique=False, help_text="(Max 200 characters)")
     created_on = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
     class Meta:
         ordering = ["-created_on"]
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'list_name'], name='unique_user_list_name')
+        ]
 
     def get_absolute_url(self):
         return reverse("check", args=[self.id])
