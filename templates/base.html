@@ -34,38 +34,67 @@
 
 <!-- Header Section -->
 <header>
+
     <!-- NAV BAR -->
-    <nav>
-        <ul>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-	            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-	            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-		            href="{% url 'account_signup' %}">Register</a>
-            </li>
-            <li class="nav-item">
-	            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
-            </li>
-            {% endif %}
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-look" href="{% url 'chirpcheck:index' %}"><i class="fa-solid fa-crow" style="color:black"></i>Chirp
+                Check! <i class="fa-solid fa-crow" style="color:black"></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'chirpcheck:index' %}">Home</a>
+                    </li></ul>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <span class="navbar-text text-muted">
+                </span>
+            </div>
+        </div>
     </nav>
 </header>
 
 <!-- Content Section, linked to templates -->
 <main class="content">
+    <div id="login-confirm">
+        {% if user.is_authenticated %}
+        <p class="text-end m-3">You are logged in as {{ user.username }}!</p>
+        {% else %}
+        <p class="text-end m-3">You are not logged in to Chirp Check!</p>
+        {% endif %}
+    </div>
     <div>
         <h1 onclick="location.href='{% url 'chirpcheck:index' %}'">
         <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i> Chirp Check! <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i>
         </h1>
     </div>
+
+<section>
     <div>
         {% block content %}
         <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
         {% endblock %}
     </div>
+</section>
 </main>
 
 <footer>
