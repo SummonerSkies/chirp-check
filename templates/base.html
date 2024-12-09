@@ -58,11 +58,11 @@
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
+                            href="{% url 'account_signup' %}">Sign Up!</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_login' %}">Login</a>
+                            href="{% url 'account_login' %}">Login!</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -83,7 +83,7 @@
         {% endif %}
     </div>
     <div>
-        <h1 onclick="location.href='{% url 'chirpcheck:index' %}'">
+        <h1>
         <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i> Chirp Check! <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i>
         </h1>
     </div>
