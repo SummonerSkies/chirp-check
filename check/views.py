@@ -1,4 +1,6 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404, reverse
@@ -15,12 +17,13 @@ class ChecklistView(LoginRequiredMixin, generic.ListView):
     """
     View for the Checklist model.
     """
-    model = Checklist.objects.all()
+    model = Checklist
     template_name ="check/index.html"
 
     def get_queryset(self):
         return Checklist.objects.filter(user=self.request.user)
-    
+
+@login_required
 def my_checklist(request, id):
     checklist = get_object_or_404(Checklist, id=id)
 
@@ -33,14 +36,6 @@ def my_checklist(request, id):
     return render(
         request, "check/my_checklist.html", context,
     )
-
-class BirdView(generic.ListView):
-    """
-    View for Birds model.
-    """
-    queryset = Bird.objects.all()
-    template_name =""
-
 """
 Create a new checklist
 """
