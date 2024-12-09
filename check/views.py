@@ -11,15 +11,23 @@ from .forms import BirdForm, ChecklistForm
 
 # Create your views here.
 
-class ChecklistView(generic.ListView):
+class ChecklistView(LoginRequiredMixin, generic.ListView):
     """
     View for the Checklist model.
     """
-    queryset = Checklist.objects.all()
+    model = Checklist.objects.all()
     template_name ="check/index.html"
+
+    def get_queryset(self):
+        return Checklist.objects.filter(user=self.request.user)
     
 def my_checklist(request, id):
     checklist = get_object_or_404(Checklist, id=id)
+
+    if checklist.user != request.user:
+        messages.warning(request, "You are not allowed to view this checklist.")
+        return redirect('login.html')
+
     birds = Bird.objects.filter(check_list=checklist)
     context = {'checklist': checklist, 'birds': birds}
     return render(
@@ -60,18 +68,22 @@ Edit an existing checklist
 def edit_checklist(request, id):
     checklist = get_object_or_404(Checklist, id=id)
     
+    checklist_form = ChecklistForm(request.POST if request.method == 'POST' else None, instance=checklist)
+
     if request.method == 'POST':
-        checklist_form = ChecklistForm(request.POST, instance=checklist)
+        if checklist.user != request.user:
+            messages.error(request, "You are not allowed to edit this checklist.")
+            return redirect('chirpcheck:checklist', id=checklist.id)
+
         if checklist_form.is_valid():
             # Save the updated checklist to the database
             checklist = checklist_form.save(commit=False)
-            checklist.user == request.user
             checklist.save()
 	        # Redirect to the updated checklist detail page or checklist list
             messages.add_message(request, messages.SUCCESS, 'Your Checklist has been updated!')
             return redirect('chirpcheck:checklist', id=checklist.id)
-    else:
-        checklist_form = ChecklistForm(instance=checklist)
+        else:
+            checklist_form = ChecklistForm(instance=checklist)
     
     return render(request, 'check/edit_checklist.html', {'checklist_form': checklist_form, 'checklist': checklist})
 
@@ -81,15 +93,14 @@ Delete an existing checklist
 def delete_checklist(request, id):
     checklist = get_object_or_404(Checklist, id=id)
 
-    # if checklist.user != request.user:
-    #     return HttpResponseForbidden("You are not allowed to delete this checklist.")
+    if checklist.user != request.user:
+        messages.error(request, 'You can only delete your own checklist!')
+        return redirect('chirpcheck:checklist', id=checklist.id)
 
     if request.method == 'POST':
         checklist.delete()
         messages.add_message(request, messages.SUCCESS, 'Checklist deleted!')
         return redirect('chirpcheck:index')
-    else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own checklist!')
 
     return render(request, 'check/confirm_checklist_delete.html', {'checklist': checklist})
 
@@ -99,13 +110,22 @@ Add a bird to an existing checklist
 def add_bird(request, checklist_id):
     checklist = get_object_or_404(Checklist, id=checklist_id)
 
+    if checklist.user != request.user:
+        messages.error(request, 'You can only add birds to your own checklist!')
+        return redirect('chirpcheck:checklist', id=checklist.id)
+
     # Starting the Birdform BEFORE checking the request method
     bird_form = BirdForm(initial={'check_list': checklist.id})
 
     # Using the form with POST data
     if request.method == 'POST':
-        bird_form = BirdForm(request.POST)  
-        if bird_form.is_valid():
+        bird_form = BirdForm(request.POST)
+
+        if checklist.user != request.user:
+            messages.error(request, "You are not allowed to change this checklist.")
+            return redirect('chirpcheck:checklist', id=checklist.id)
+
+        if bird_form.is_valid() and checklist.user == request.user:
             bird_name = bird_form.cleaned_data['bird_name']
             status = bird_form.cleaned_data['status']
             number_seen = bird_form.cleaned_data['number_seen']
@@ -144,24 +164,12 @@ def add_bird(request, checklist_id):
 """
 Update the bird 'status' and 'number_seen'
 """
-# def update_bird(request, checklist_id, bird_id):
-#     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
-    
-#     if request.method == "POST":
-#         status = request.POST.get('status')
-#         number_seen = request.POST.get('number_seen')
-        
-#         bird.status = status
-#         bird.number_seen = number_seen
-#         bird.save()
-
-#         messages.success(request, f'Your sighting of {bird.bird_name} has been updated!')
-#         return redirect('chirpcheck:checklist', id=checklist_id)
-    
-#     return redirect('chirpcheck:checklist', id=checklist_id)
-
 def update_bird(request, checklist_id, bird_id):
     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
+
+    if checklist.user != request.user:
+        messages.error(request, 'You can only change birds on your own checklist!')
+        return redirect('chirpcheck:checklist', id=checklist.id)
 
     if request.method == "POST":
         # Get the status and number_seen from the form submission
@@ -189,6 +197,10 @@ Remove a bird from an existing checklist
 def delete_bird(request, checklist_id, bird_id):
     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
     
+    if checklist.user != request.user:
+        messages.error(request, 'You can only remove birds from your own checklist!')
+        return redirect('chirpcheck:checklist', id=checklist.id)
+
     if request.method == "POST":
         bird.delete()
         messages.success(request, f'{bird.bird_name} has been deleted from your checklist.')
