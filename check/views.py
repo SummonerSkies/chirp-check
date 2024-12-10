@@ -191,6 +191,7 @@ def update_bird(request, checklist_id, bird_id):
 Remove a bird from an existing checklist
 """
 def delete_bird(request, checklist_id, bird_id):
+    checklist = get_object_or_404(Checklist, id=checklist_id)
     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
     
     if checklist.user != request.user:

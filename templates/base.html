@@ -88,13 +88,23 @@
         </h1>
     </div>
 
-<section>
-    <div>
+    <div class="container">
+        <!-- Display messages -->
+            {% if messages %}
+                <div class="messages">
+                    <ul>
+                        {% for message in messages %}
+                            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+        <!-- Page Content -->
         {% block content %}
         <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
         {% endblock %}
     </div>
-</section>
 </main>
 
 <footer>
