@@ -1,3 +1,120 @@
+/* Header */
+
 h1 {
-    color: indigo;
+  color: indigo;
+}
+
+/* Body */
+
+body {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:75vh;
+  max-width: 600px;
+}
+
+.content {
+    margin: auto;
     }
+
+.my_check_list {
+  align-content: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+main {
+  display: flex;
+  flex: 1 0 auto;  
+  /* Add margin at top to prevent content from being covered by header */
+  margin-top: 45px;
+  /* Enable flex properties for child elements */
+  flex-direction: column;
+}
+
+/* Messages */
+
+.alert {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+div {
+  margin: 1em;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* birds number_seen styling */
+
+.number-seen {
+  display: none;  /* Initially hidden */
+}
+
+.number-seen input {
+  width: 50px;
+  padding: 5px;
+}
+
+.status-select {
+  padding: 5px;
+}
+
+.button-seen {
+  margin-top: 10px;
+}
+
+.toggle-status-btn {
+  transition: opacity 0.3s ease;
+}
+
+.toggle-status-btn.faded {
+  opacity: 0.5;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  left: 0;
+  bottom: 0;
+  padding: 20px 0;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
