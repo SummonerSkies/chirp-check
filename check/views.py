@@ -143,7 +143,7 @@ def add_bird(request, checklist_id):
                 bird.save()
             
             messages.success(
-                request, f'Your bird sighting has been saved for {bird_name}!'
+                request, f'{bird_name} has now been added to your checklist!'
                 )
             return redirect(
                 'chirpcheck:checklist', id=checklist.id

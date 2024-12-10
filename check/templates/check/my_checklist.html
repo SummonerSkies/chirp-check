@@ -41,11 +41,11 @@
                 </form>
 
                 <!-- Button to delete bird from checklist -->
-                <form method="POST" action="{% url 'chirpcheck:delete_bird' checklist.id bird.id %}" style="display: inline;">
+                <form method="POST" action="{% url 'chirpcheck:confirm_bird_delete' checklist.id bird.id %}" style="display: inline;" id="deleteBirdForm">
                     {% csrf_token %}
                     <button type="submit">Delete Bird</button>
                 </form>
-            </div>
+           </div>
         </li>
         {% empty %}
             <p>No birds sighted yet!</p>
