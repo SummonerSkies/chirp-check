@@ -181,7 +181,7 @@ def update_bird(request, checklist_id, bird_id):
         bird.save()
 
         # Success message after updating
-        messages.success(request, f'Your sighting of {bird.bird_name} has been updated!')
+        messages.success(request, f'Your {bird.bird_name} sighting has been updated!')
         return redirect('chirpcheck:checklist', id=checklist_id)
 
     # If not POST (for any other method), just redirect back
