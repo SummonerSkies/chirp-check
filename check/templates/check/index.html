@@ -13,7 +13,7 @@
         <div
             role="button"
             onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-            <h4>{{ checklist.id }}: {{ checklist.list_name }}</h4>
+            <h4>{{ checklist.list_name }}</h4>
         </div>
         <div>
             <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button>Edit</button></a>
@@ -27,14 +27,6 @@
 
 <p><a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a></p>
 
-
-<!-- Things to add:
-If option for 
-    1. message when there's no lists,
-    2. listed view when something is generated. 
-    3. need to take into account when logged in/out. -->
-
-</div>
 {% endblock %}
 <!-- index.html content ends here -->
 {% block copyright %}&copy; 2024 Chirp Check. All rights reserved.
