@@ -160,6 +160,7 @@ def add_bird(request, checklist_id):
 Update the bird 'status' and 'number_seen'
 """
 def update_bird(request, checklist_id, bird_id):
+    checklist = get_object_or_404(Checklist, id=checklist_id)
     bird = get_object_or_404(Bird, id=bird_id, check_list_id=checklist_id)
 
     if checklist.user != request.user:
