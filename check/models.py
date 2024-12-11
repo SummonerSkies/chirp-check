@@ -20,7 +20,7 @@ class Checklist(models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("check", args=[self.id])
+        return reverse("chirpcheck:checklist", args=[self.id])
 
     def __str__(self):
         return self.list_name

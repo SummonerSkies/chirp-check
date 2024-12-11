@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from check.models import Bird, Checklist
 
-
 class ChecklistModelTest(TestCase):
     def setUp(self):
         """
