@@ -33,17 +33,22 @@ class BirdForm(forms.ModelForm):
     Form class for adding birds to a checklist
     """
     class Meta:
-        """
-        Specify the django model and order of the 'bird' fields
-        """
         model = Bird
-        fields = ('bird_name', 'status', 'number_seen', 'check_list')
-    # Hide check_list field as this form should already be associated with the checklist
+        fields = ['bird_name', 'status', 'number_seen', 'check_list']
         widgets = {
             'check_list': forms.HiddenInput(),
         }
-        # labels = {
-		# 	'bird_name': 'Name of Bird',
-		# 	'status': 'Did You See It?',  
-		# 	'number_seen': 'Number of Birds Seen'
-		# }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        bird_name = cleaned_data.get('bird_name')
+        check_list = cleaned_data.get('check_list')
+        
+        # Get the current bird instance (if any)
+        current_bird = self.instance
+        
+        # Check if the bird already exists in the checklist, but exclude the current bird
+        if Bird.objects.filter(bird_name=bird_name, check_list=check_list).exclude(id=current_bird.id).exists():
+            raise forms.ValidationError("This bird already exists in your checklist.")
+
+        return cleaned_data
