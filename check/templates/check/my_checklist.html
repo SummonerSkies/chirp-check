@@ -40,11 +40,33 @@
                     Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
                 </form>
 
-                <!-- Button to delete bird from checklist -->
-                <form method="POST" action="{% url 'chirpcheck:confirm_bird_delete' checklist.id bird.id %}" style="display: inline;" id="deleteBirdForm">
-                    {% csrf_token %}
-                    <button type="submit">Delete Bird</button>
-                </form>
+                <!-- Button to trigger the delete bird model from checklist -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ bird.id }}">
+                    Delete Bird
+                </button>
+
+                <!-- Bootstrap Modal for confirming the deletion -->
+                <div class="modal fade" id="deleteModal-{{ bird.id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ bird.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel-{{ bird.id }}">Confirm Deletion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete the bird <strong>{{ bird.bird_name }}</strong> from your checklist?
+                            </div>
+                            <div class="modal-footer">
+                                <!-- Form to confirm deletion, which will be triggered when the user clicks 'Confirm' -->
+                                <form method="POST" action="{% url 'chirpcheck:confirm_bird_delete' checklist.id bird.id %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
            </div>
         </li>
         {% empty %}
