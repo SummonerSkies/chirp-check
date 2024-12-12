@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Add Bird to Checklist: {{ checklist.list_name }}</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ bird_form.as_p }}
-    <button type="submit">Add Bird</button>
-  </form>
-  <a href="{% url 'chirpcheck:checklist' checklist.id %}">Back to Checklist</a>
+<div>
+    <h2>Add a Bird to {{ checklist.list_name }}:</h2>
+      <form method="POST">
+        {% csrf_token %}
+        {{ bird_form.as_p }}
+      <button type="submit">Add Bird</button>
+      </form>
+    <a href="{% url 'chirpcheck:checklist' checklist.id %}"><i class="fa-solid fa-arrow-left"></i> Back to Checklist</a>
+</div>
 {% endblock %}

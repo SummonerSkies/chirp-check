@@ -3,10 +3,10 @@
 {% block content %}
 
 <section>
-    <div class="my_check_list">
+    <div class="custom-card">
         <h2>{{ check_list.list_name | upper }}</h2>
         
-        <div class="custom-card">
+        <div>
             <div class="checklist-details d-flex justify-content-between align-items-center">
                 <!-- Left side, centered vertically -->
                 <div class="left-side">
@@ -26,76 +26,90 @@
 <!-- Bird Sightings Section -->
 <section>
     <div class="custom-card">
-    <div class="d-flex justify-content-around">
-        <div>
-            <h4>My Bird Sightings</h4>
+        <div class="d-flex justify-content-around">
+            <div>
+                <h4>My Bird Sightings</h4>
+            </div>
+            <div>
+                <p>
+                    <a href="{% url 'chirpcheck:add_bird' checklist.id %}">
+                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-crow"></i> Add a
+                            Bird!</button>
+                    </a>
+                </p>
+            </div>
         </div>
-        <div>
-            <p>
-                <a href="{% url 'chirpcheck:add_bird' checklist.id %}">
-                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-crow"></i> Add a Bird!</button>
-                </a>
-            </p>    
-        </div>
-    </div>
 
-<!-- Button to Add a Bird to the checklist -->
-    <ul class="bird-container" aria-label="Bird List">
-        {% for bird in checklist.bird_set.all %}
-        <li>
-            <div class="bird-bird">
-                <strong>{{ bird.bird_name }}</strong> 
+        <!-- Button to Add a Bird to the checklist -->
+        <ul class="bird-container" aria-label="Bird List">
+            {% for bird in checklist.bird_set.all %}
+            <li>
+                <div class="bird-bird">
+                    <strong>{{ bird.bird_name }}</strong>
 
-                <!-- Dropdown for Status and Number Seen -->
-                <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}" style="display: inline;">
-                    {% csrf_token %}
-                    
-                    <!-- Status Dropdown -->
-                    <select name="status" id="status-{{ bird.id }}">
-                        <option value="Not Seen" {% if bird.status == "Not Seen" %}selected{% endif %}>Not Seen</option>
-                        <option value="Spotted" {% if bird.status == "Spotted" %}selected{% endif %}>Spotted</option>
-                    </select>
+                    <!-- Dropdown for Status and Number Seen -->
+                    <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}"
+                        style="display: inline;">
+                        {% csrf_token %}
 
-                    <!-- Update Status Button -->
-                    <button type="submit" class="update-status-btn">Update</button>
-                    <br />
-                    <!-- Number Seen Input -->
-                    Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen" id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0" {% if bird.status == "Not Seen" %}disabled{% endif %}>
-                </form>
+                        <!-- Status Dropdown -->
+                        <select name="status" id="status-{{ bird.id }}">
+                            <option value="Not Seen" {% if bird.status == "Not Seen" %}selected{% endif %}>Not Seen
+                            </option>
+                            <option value="Spotted" {% if bird.status == "Spotted" %}selected{% endif %}>Spotted
+                            </option>
+                        </select>
 
-                <!-- Button to trigger the delete bird model from checklist -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ bird.id }}">
-                    <i class="fa-solid fa-trash-can"></i> Delete Bird
-                </button>
+                        <!-- Update Status Button -->
+                        <button type="submit" class="update-status-btn">Update</button>
+                        <br />
+                        <!-- Number Seen Input -->
+                        Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen"
+                            id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0"
+                            {% if bird.status == "Not Seen" %}disabled{% endif %}>
+                    </form>
 
-                <!-- Bootstrap Modal for confirming the deletion -->
-                <div class="modal fade" id="deleteModal-{{ bird.id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ bird.id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel-{{ bird.id }}">Confirm Deletion</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete the bird <strong>{{ bird.bird_name }}</strong> from your checklist?
-                            </div>
-                            <div class="modal-footer">
-                                <!-- Form to confirm deletion, which will be triggered when the user clicks 'Confirm' -->
-                                <form method="POST" action="{% url 'chirpcheck:confirm_bird_delete' checklist.id bird.id %}" style="display: inline;">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Confirm Delete</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                </form>
+                    <!-- Button to trigger the delete bird model from checklist -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal-{{ bird.id }}">
+                        <i class="fa-solid fa-trash-can"></i> Delete Bird
+                    </button>
+
+                    <!-- Bootstrap Modal for confirming the deletion -->
+                    <div class="modal fade" id="deleteModal-{{ bird.id }}" tabindex="-1"
+                        aria-labelledby="deleteModalLabel-{{ bird.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel-{{ bird.id }}">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete the bird <strong>{{ bird.bird_name }}</strong> from
+                                    your checklist?
+                                </div>
+                                <div class="modal-footer">
+                                    <!-- Form to confirm deletion, which will be triggered when the user clicks 'Confirm' -->
+                                    <form method="POST"
+                                        action="{% url 'chirpcheck:confirm_bird_delete' checklist.id bird.id %}"
+                                        style="display: inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger"><i
+                                                class="fa-solid fa-trash-can"></i> Confirm Delete</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-           </div>
-        </li>
-        {% empty %}
+            </li>
+            {% empty %}
             <p>No birds sighted yet!</p>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
     </div>
 </section>
 
