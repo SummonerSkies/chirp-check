@@ -1,37 +1,55 @@
-/* Header */
+/* Google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/** Browser Overide **/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 html, body {
   overflow-x: hidden;
+  margin-top: 0 !important;
+}
+
+/* Remove margin and padding from the navbar */
+.navbar {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Remove any top padding from the container inside the navbar */
+.container-fluid {
+  padding-top: 0;
 }
 
 /* Body */
 body {
-  background-color: #a9d6b4;
-  color: #3b7981;
-  min-height: 100vh;
-  margin: 1rem;
-  padding-bottom: 1.5rem;
   display:flex;
-  flex-direction:column;
+  background-color: #7fc0e6;
+  color: #1c4b8d;
+  font-family: 'Lato', sans-serif;
+  margin: 1rem;
+  min-height: 100vh;
+  width: 100%;
 }
 
-.content {
-    margin: auto;
-    }
+h1, h2 {
+  font-family: 'Condiment', sans-serif;
+}
+
+.chirp-logo {
+  font-family: 'Condiment', sans-serif;
+  font-size: 45px;
+  list-style-type: none;
+  color:#1c4b8d;
+}
 
 .my_check_list {
   align-content: center;
   justify-content: space-evenly;
   list-style-type: none;
-}
-
-main {
-  width: 100%;
-  display: flex;
-  flex: 1 0 auto;  
-  /* Add margin at top to prevent content from being covered by header */
-  margin-top: 45px;
-  /* Enable flex properties for child elements */
-  flex-direction: column;
 }
 
 /* Messages */
@@ -62,18 +80,31 @@ div {
   margin: 1em;
 }
 
-ul {
+ul, li {
   list-style: none;
 }
 
 li {
-  list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
 /* bird list styling */
 
+.checklist-details {
+  display: flex;
+  align-items: center; /* Vertically centers the left-side content */
+  margin-top: 1em;
+}
+
+.left-side {
+  flex: 1; /* Left side takes up remaining space */
+  text-align: left; /* Ensures text on the left side is aligned to the left */
+} 
+
+.right-side {
+  text-align: right; /* Aligns text on the right side */
+}
 
 /* birds number_seen styling */
 
@@ -112,4 +143,15 @@ footer {
   height: 2.5rem;
   justify-content: space-evenly;
   list-style-type: none;
+}
+
+
+@media screen and (min-width: 550px) {
+ 
+/* Main content */
+  main {
+      /* Push main content down to accommodate larger header */
+      min-width: 550px;
+  }
+
 }
