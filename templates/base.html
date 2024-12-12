@@ -91,7 +91,7 @@
     <div class="container">
         <!-- Display messages -->
             {% if messages %}
-                <div id="msg" class="messages alert alert-success" role="alert">
+                <div id="msg" class="messages alert" role="alert">
                     <ul>
                         {% for message in messages %}
                             <li class="alert alert-{{ message.tags }}">{{ message }}</li>
