@@ -2,18 +2,18 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
+<div class="container d-flex justify-content-center align-items-center min-vh-0.5">
     <div class="row justify-content-center">
       <div class="col-md-8 card mb-8 mt-6">
         <div class="card-body text-center">
           <h3>Updating {{ checklist.list_name }}!</h3>
         </div>
-        <div class="justify-content-center">
-            <form method="POST">
+        <div>
+            <form method="POST" class="text-align">
                 {% csrf_token %}
                 {{ checklist_form.as_p }}
-                <div>
-                    <button type="submit" class="btn-info"><i class="fa-solid fa-feather"></i> Save Your Update!</button>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" type="submit"><i class="fa-solid fa-feather"></i> Save Your Update!</button>
                 </div>
             </form>
             <div style="text-align: center;">

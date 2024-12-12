@@ -155,13 +155,6 @@ li {
   background-color: #fff;
 }
 
-#signup_text, #signup_complete {
-  /* Adjust the column width for larger screens */
-  flex: 0 0 66.6667%;  /* equivalent to col-md-8 */
-  display: block;
-}
-
-
 /* Footer */
 footer {
   display: flex;

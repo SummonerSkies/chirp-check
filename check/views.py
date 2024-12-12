@@ -82,7 +82,7 @@ def edit_checklist(request, id):
             checklist.save()
 	        # Redirect to the updated checklist detail page or checklist list
             messages.add_message(request, messages.SUCCESS, 'Your Checklist has been updated!')
-            return redirect('chirpcheck:checklist', id=checklist.id)
+            return redirect('chirpcheck:index')
 
     # For GET request:
     return render(request, 'check/edit_checklist.html', {'checklist_form': checklist_form, 'checklist': checklist})

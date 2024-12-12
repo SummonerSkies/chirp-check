@@ -72,6 +72,10 @@
         </div>
     </div>
 </nav>
+
+<!-- Content Section, linked to templates -->
+<main class="content">
+    <!-- Logged In Messages -->
     <div id="login-confirm">
         {% if user.is_authenticated %}
             <p class="text-end m-3">You are logged in as {{ user.username }}!</p>
@@ -84,10 +88,7 @@
             <i class="fa-solid fa-crow" style="font-size:45px"></i> Chirp Check! <i class="fa-solid fa-crow" style="font-size:45px"></i>
         </h1>
     </div>
-
-    <!-- Content Section, linked to templates -->
-<main class="content">
-        <!-- Display messages -->
+    <!-- Display messages -->
     {% if messages %}
         <div id="msg" class="messages alert" role="alert">
             <ul>
@@ -99,9 +100,10 @@
     {% endif %}
     <div class="container">
         <!-- Page Content -->
-            {% block content %}
-                <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
-            {% endblock %}
+        {% block content %}
+            <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
+        {% endblock %}
+        </div>
     </div>
 </main>
 
