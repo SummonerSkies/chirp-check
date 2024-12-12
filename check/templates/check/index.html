@@ -35,11 +35,11 @@
                             <td>{{ checklist.description }}</td>
                             <td>{{ checklist.created_on|date:"F j, Y, g:i a" }}</td>
                             <td>
-                                <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button><i class="fa-solid fa-feather"></i> Edit</button></a>
+                                <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}" class="btn btn-primary"><i class="fa-solid fa-feather"></i> Edit</a>
                             </td>
                             <td>
                                 <a
-                                    href="{% url 'chirpcheck:delete_checklist' checklist.id %}"><button><i class="fa-solid fa-trash-can"></i> Delete</button></a>
+                                    href="{% url 'chirpcheck:delete_checklist' checklist.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
                             </td>
                         </tr>
                         {% empty %}
@@ -56,7 +56,7 @@
     </div>
 </div>
 <div class="d-flex justify-content-center">
-    <p><a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a></p>
+    <p><a href="{% url 'chirpcheck:create' %}" class="btn btn-primary">Click here to make a new checklist!</a></p>
 </div>
 
 {% endblock %}

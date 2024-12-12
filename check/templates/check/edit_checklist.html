@@ -3,21 +3,21 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-8 card mb-8 mt-6">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h3>Updating {{ checklist.list_name }}!</h3>
         </div>
-        <div>
+        <div class="justify-content-center">
             <form method="POST">
                 {% csrf_token %}
                 {{ checklist_form.as_p }}
-                <div style="display: flex; justify-content: center;">
+                <div>
                     <button type="submit" class="btn-info"><i class="fa-solid fa-feather"></i> Save Your Update!</button>
                 </div>
             </form>
             <div style="text-align: center;">
-                <a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</Button></a>
+                <a href="{% url 'chirpcheck:index' %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</a>
             </div>    
         </div>
     </div>

@@ -43,6 +43,7 @@ h1, h2 {
   font-family: 'Condiment', sans-serif;
   font-size: 45px;
   list-style-type: none;
+  color:#1c4b8d;
 }
 
 .my_check_list {
@@ -132,6 +133,35 @@ li {
   opacity: 0.5;
 }
 
+
+/* sign in page styling */
+.signin_container {
+  display: flex;
+  justify-content: center;  /* Horizontally center the content */
+  align-items: center;  /* Vertically center the content */
+}
+
+/* sign out page styling */
+.signout-container {
+  display: flex;
+  justify-content: center;  /* Horizontally center the content */
+  align-items: center;  /* Vertically center the content */
+}
+
+/* Styling for the card */
+.signout-card {
+  width: 20rem;  /* Specify a fixed width for the card */
+  padding: 1.5rem;  /* Add some padding inside the card */
+  background-color: #fff;
+}
+
+#signup_text, #signup_complete {
+  /* Adjust the column width for larger screens */
+  flex: 0 0 66.6667%;  /* equivalent to col-md-8 */
+  display: block;
+}
+
+
 /* Footer */
 footer {
   display: flex;
@@ -144,20 +174,5 @@ footer {
   list-style-type: none;
 }
 
-
-@media screen and (min-width: 768px) {
-  /* Header */
-  nav {
-      display: block;
-      position: relative;
-      box-shadow: none;
-      width: fit-content;
-      padding-right: 1rem;
-  }
-  /* Main content */
-  main {
-      /* Push main content down to accommodate larger header */
-      margin-top: 79px;
-  }
-
-}
+/* For screens 550px or smaller */
+@media (max-width: 550px) {

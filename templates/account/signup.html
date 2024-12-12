@@ -1,31 +1,33 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load account socialaccount %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock head_title %}
 
 {% block content %}
-<div class="container">
+<div class="container card" style="width:fit-content;padding:2.5rem;">
   <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
-      <h3>{% trans "Sign Up" %}</h3>
-
+    <div class="col-md-8 mt-3 offset-md-2 text-center">
+      <h3><u>{% trans "Sign Up" %}</u></h3>
       <p>{% blocktrans %}
-        Welcome to Chirp Check!</p>
-      <p>Already have an account with us? Then please <a href="{{ login_url }}">sign in here</a>!
+        Welcome to <strong>Chirp Check!</strong></p>
+      <p>You are just a few chirps away from making simple checklists to help you keep track of birds you see!</p>
+      <p>Already have an account with us?<br>Then please <strong><a href="{{ login_url }}">sign in here</a></strong>!
         {% endblocktrans %}</p>
     </div>
   </div>
-
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-md-8 mt-3 offset-md-2">
       <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
         {% endif %}
-        <button class="btn btn-success right" type="submit">{% trans "Sign Up" %} <i class="fa-solid fa-feather"></i></button>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-success right" type="submit">{% trans "Sign Up" %} <i class="fa-solid fa-feather"></i></button>
+        </div>
       </form>
     </div>
   </div>

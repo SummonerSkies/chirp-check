@@ -60,11 +60,11 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == signup_url %}active" aria-current="page" aria-current="page{% endif %}"
+                    <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
                         href="{% url 'account_signup' %}">Sign Up!</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}" aria-current="page"
+                    <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
                         href="{% url 'account_login' %}">Login</a>
                 </li>
                 {% endif %}
@@ -85,27 +85,24 @@
         </h1>
     </div>
 
-<!-- Content Section, linked to templates -->
+    <!-- Content Section, linked to templates -->
 <main class="content">
-    <section>
-        <div class="container">
-            <!-- Display messages -->
-                {% if messages %}
-                    <div id="msg" class="messages alert" role="alert">
-                        <ul>
-                            {% for message in messages %}
-                                <li class="alert alert-{{ message.tags }}">{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-
-            <!-- Page Content -->
-            {% block content %}
-            <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
-            {% endblock %}
+        <!-- Display messages -->
+    {% if messages %}
+        <div id="msg" class="messages alert" role="alert">
+            <ul>
+                {% for message in messages %}
+                    <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
         </div>
-    </section>
+    {% endif %}
+    <div class="container">
+        <!-- Page Content -->
+            {% block content %}
+                <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
+            {% endblock %}
+    </div>
 </main>
 
 <footer class="footer mt-auto py-3 dark-bg">

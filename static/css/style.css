@@ -133,6 +133,28 @@ li {
   opacity: 0.5;
 }
 
+
+/* sign in page styling */
+.signin_container {
+  display: flex;
+  justify-content: center;  /* Horizontally center the content */
+  align-items: center;  /* Vertically center the content */
+}
+
+/* sign out page styling */
+.signout-container {
+  display: flex;
+  justify-content: center;  /* Horizontally center the content */
+  align-items: center;  /* Vertically center the content */
+}
+
+/* Styling for the card */
+.signout-card {
+  width: 20rem;  /* Specify a fixed width for the card */
+  padding: 1.5rem;  /* Add some padding inside the card */
+  background-color: #fff;
+}
+
 /* Footer */
 footer {
   display: flex;
@@ -145,13 +167,5 @@ footer {
   list-style-type: none;
 }
 
-
-@media screen and (min-width: 550px) {
- 
-/* Main content */
-  main {
-      /* Push main content down to accommodate larger header */
-      min-width: 550px;
-  }
-
-}
+/* For screens 550px or smaller */
+@media (max-width: 550px) {
