@@ -13,11 +13,11 @@
                 {% csrf_token %}
                 {{ checklist_form.as_p }}
                 <div style="display: flex; justify-content: center;">
-                    <button type="submit" class="btn-info">Save Your Update!</button>
+                    <button type="submit" class="btn-info"><i class="fa-solid fa-feather"></i> Save Your Update!</button>
                 </div>
             </form>
             <div style="text-align: center;">
-                <a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-secondary">Back to My Checklists</Button></a>
+                <a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</Button></a>
             </div>    
         </div>
     </div>

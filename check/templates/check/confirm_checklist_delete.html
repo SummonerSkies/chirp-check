@@ -3,35 +3,37 @@
 {% block content %}
 
 <h3>Delete A Checklist</h3>
-<p>Are you sure you want to delete the following checklist?</p>
-
-<section>
-    <ul>
-        <li>
-            List Name: <b>{{ checklist.list_name }}</b>
-        </li>
-        <li>
-            Location: <b>{{ checklist.description }}</b>
-        </li>
-        <li>
-            Date Created: <b>{{ checklist.created_on }}</b>
-        </li>
-    </ul>
-</section>
-
-<section>
+<div class="custom-card">
     <div>
-        <form method="POST">
-            {% csrf_token %}
-            <input
-                value="Yes, Delete!"
-                type="submit">
-            <input
-                value="Cancel"
-                type="button"
-                onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-        </form>
+    <p>Are you sure you want to delete the following checklist?</p>
     </div>
-</section>
+    <div>
+        <ul>
+            <li>
+                List Name: <b>{{ checklist.list_name }}</b>
+            </li>
+            <li>
+                Location: <b>{{ checklist.description }}</b>
+            </li>
+            <li>
+                Date Created: <b>{{ checklist.created_on }}</b>
+            </li>
+        </ul>
+    </div>
 
+    <div>
+        <div class="d-flex justify-content-center">
+            <form method="POST">
+                {% csrf_token %}
+                <input
+                    value="Yes, Delete!"
+                    type="submit">
+                <input
+                    value="Cancel"
+                    type="button"
+                    onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

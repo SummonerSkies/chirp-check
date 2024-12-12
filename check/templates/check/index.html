@@ -5,27 +5,59 @@
 
 <!-- index.html content starts here -->
 {% if object_list %}
-<h3>My Chirp Checklists!</h3>
 {% endif %}
-<ul>
-    {% for checklist in object_list %}
-    <li>
-        <div
-            role="button"
-            onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
-            <h4>{{ checklist.list_name }}</h4>
+<div class="row mb-5">
+    <div class="col">
+        <div class="card shadow-lg">
+            <div class="card-header bg-white text-primary">
+                <h3 class="mb-0">Recent Bird Watching Trips</h3>
+            </div>
+            <div class="card-body">
+                <!-- Checklist Table Headings -->
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="chirp-checklist th">
+                        <tr>
+                            <th>Checklist</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th> </th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <!-- Table body displays checklist data -->
+                    <tbody>
+                        {% for checklist in object_list %}
+                        <tr>
+                            <td>
+                                <strong> <a role="button"
+                                    onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">{{ checklist.list_name }}</a></strong>
+                            </td>
+                            <td>{{ checklist.description }}</td>
+                            <td>{{ checklist.created_on|date:"F j, Y, g:i a" }}</td>
+                            <td>
+                                <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button><i class="fa-solid fa-feather"></i> Edit</button></a>
+                            </td>
+                            <td>
+                                <a
+                                    href="{% url 'chirpcheck:delete_checklist' checklist.id %}"><button><i class="fa-solid fa-trash-can"></i> Delete</button></a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">
+                                <h4>You have no lists!</h4>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}"><button>Edit</button></a>
-            <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}"><button>Delete</button></a>
-        </div>
-    </li>
-    {% empty %}
-    <h4>You have no lists!</h4>
-    {% endfor %}
-</ul>
-
-<p><a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a></p>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <p><a href="{% url 'chirpcheck:create' %}"><button type="button" class="btn btn-primary">Click here to make a new checklist!</button></a></p>
+</div>
 
 {% endblock %}
 <!-- index.html content ends here -->

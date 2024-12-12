@@ -8,18 +8,23 @@
     <div class="row">
       <div class="col-md-8 card mb-8 mt-6">
         <div class="card-body">
-          <h3>Create a new<br /> Bird Checklist!</h3>
-              <form id="apptForm" method="post" style="margin-top: 1.3em;">
-                {{ checklist_form | crispy }}
-                {% csrf_token %}
+          <h3 class="text-center">Create a new<br /> Bird Checklist!</h3>
+            <form id="apptForm" method="post" style="margin-top: 1.3em;">
+              {{ checklist_form | crispy }}
+              {% csrf_token %}
+              <div class="d-flex justify-content-center">
                 <button id="submitButton" 
                   type="submit"
-                  class="btn btn-signup btn-info">Submit</button>
-          </form>
+                  class="btn btn-signup btn-info"><i class="fa-solid fa-feather"></i> Submit
+                </button>
+              </div>
+            </form>
         </div>
-        <p><a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-secondary">Back to My Checklists</Button></a></p>
-      </div>
+        <div class="d-flex justify-content-center">
+          <p><a href="{% url 'chirpcheck:index' %}"><Button type="button" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</Button></a></p>
+        </div>
     </div>
+  </div>
 </div>
 
 {% endblock %}

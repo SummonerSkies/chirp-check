@@ -5,22 +5,45 @@
 <section>
     <div class="my_check_list">
         <h2>{{ check_list.list_name | upper }}</h2>
+        
+        <div class="custom-card">
+            <div class="checklist-details d-flex justify-content-between align-items-center">
+                <!-- Left side, centered vertically -->
+                <div class="left-side">
+                    <h3>{{ checklist.list_name }}</h3>
+                </div>
+            
+                <!-- Right side -->
+                <div class="right-side">
+                    <p>LOCATION: {{ checklist.description }}</p>
+                    <p>Date Created: {{ checklist.created_on }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <ul>
-        <li><h3>{{ checklist.list_name }}</h3></li>
-        <li>
-            LOCATION: {{ checklist.description }}<br />Date Created: {{ checklist.created_on }}
-        </li>
-    </ul>
 </section>
 
-<!-- Loop through the birds in this checklist -->
+<!-- Bird Sightings Section -->
 <section>
-    <h4>My Bird Sightings</h4>
-    <ul>
+    <div class="custom-card">
+    <div class="d-flex justify-content-around">
+        <div>
+            <h4>My Bird Sightings</h4>
+        </div>
+        <div>
+            <p>
+                <a href="{% url 'chirpcheck:add_bird' checklist.id %}">
+                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-crow"></i> Add a Bird!</button>
+                </a>
+            </p>    
+        </div>
+    </div>
+
+<!-- Button to Add a Bird to the checklist -->
+    <ul class="bird-container" aria-label="Bird List">
         {% for bird in checklist.bird_set.all %}
         <li>
-            <div class="bird-entry">
+            <div class="bird-bird">
                 <strong>{{ bird.bird_name }}</strong> 
 
                 <!-- Dropdown for Status and Number Seen -->
@@ -42,7 +65,7 @@
 
                 <!-- Button to trigger the delete bird model from checklist -->
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ bird.id }}">
-                    Delete Bird
+                    <i class="fa-solid fa-trash-can"></i> Delete Bird
                 </button>
 
                 <!-- Bootstrap Modal for confirming the deletion -->
@@ -60,7 +83,7 @@
                                 <!-- Form to confirm deletion, which will be triggered when the user clicks 'Confirm' -->
                                 <form method="POST" action="{% url 'chirpcheck:confirm_bird_delete' checklist.id bird.id %}" style="display: inline;">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Confirm Delete</button>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 </form>
                             </div>
@@ -73,26 +96,24 @@
             <p>No birds sighted yet!</p>
         {% endfor %}
     </ul>
+    </div>
 </section>
 
-<!-- Button to Add a Bird to the checklist -->
-<p>
-    <a href="{% url 'chirpcheck:add_bird' checklist.id %}">
-        <button>Add a Bird!</button>
-    </a>
-</p>
-
-<!-- Button to delete the checklist -->
-<p>
-    <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}">
-        <button>Delete this Checklist</button>
-    </a>
-</p>
 <!-- Button to return to checklist index -->
-<p>
-    <a href="{% url 'chirpcheck:index' %}">
-        <button class="btn btn-info">Back to My Checklists</button>
-    </a>
-</p>
-
+<div class="d-flex justify-content-between">
+    <div>
+        <p>
+            <a href="{% url 'chirpcheck:index' %}">
+                <button class="btn btn-info"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</button>
+            </a>
+        </p>
+    </div>
+        <!-- Button to delete the checklist -->
+    <div>
+        <p>
+            <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}">
+                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i> Delete this Checklist</button></a>
+        </p>
+    </div>
+</div>
 {% endblock %}

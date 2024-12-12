@@ -9,47 +9,48 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Page Title -->
     <title>Chirp Check! The Birdwatching Checklist App</title>
 
+    <!-- Google Fonts CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    
     <!-- Bootstrap CSS -->
-     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <!-- My CSS Styling -->
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
 
-    {% block extras %}
-
-    {% endblock %}
-</head>
-
-<body class="d-flex flex-column h-100 main-bg"></body>
+<body class="d-flex flex-column h-100 main-bg">
 
 <!-- Header Section -->
 <header>
-
     <!-- NAV BAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            <a class="navbar-look" href="{% url 'chirpcheck:index' %}"><i class="fa-solid fa-crow" style="color:black"></i>Chirp
-                Check! <i class="fa-solid fa-crow" style="color:black"></i></a>
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <!-- <div class="container-fluid"> -->
+            <a class="navbar-look" href="{% url 'chirpcheck:index' %}">Chirp
+                Check!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
                             href="{% url 'chirpcheck:index' %}">Home</a>
-                    </li></ul>
+                    </li>
+                </ul>
+                <ul>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
@@ -69,46 +70,52 @@
                 <span class="navbar-text text-muted">
                 </span>
             </div>
-        </div>
+        <!-- </div> -->
     </nav>
+        <div id="login-confirm">
+            {% if user.is_authenticated %}
+            <p class="text-end m-3">You are logged in as {{ user.username }}!</p>
+            {% else %}
+            <p class="text-end m-3">You are not logged in to Chirp Check!</p>
+            {% endif %}
+        </div>
+        <div class="d-flex justify-content-center">
+            <h1>
+            <i class="fa-solid fa-crow" style="font-size:45px"></i> Chirp Check! <i class="fa-solid fa-crow" style="font-size:45px"></i>
+            </h1>
+        </div>
 </header>
 
 <!-- Content Section, linked to templates -->
 <main class="content">
-    <div id="login-confirm">
-        {% if user.is_authenticated %}
-        <p class="text-end m-3">You are logged in as {{ user.username }}!</p>
-        {% else %}
-        <p class="text-end m-3">You are not logged in to Chirp Check!</p>
-        {% endif %}
-    </div>
-    <div>
-        <h1>
-        <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i> Chirp Check! <i class="fa-solid fa-crow" style="font-size:45px;color:black"></i>
-        </h1>
-    </div>
+    <section>
+        <div class="container">
+            <!-- Display messages -->
+                {% if messages %}
+                    <div id="msg" class="messages alert" role="alert">
+                        <ul>
+                            {% for message in messages %}
+                                <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
 
-    <div class="container">
-        <!-- Display messages -->
-            {% if messages %}
-                <div id="msg" class="messages alert" role="alert">
-                    <ul>
-                        {% for message in messages %}
-                            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
-
-        <!-- Page Content -->
-        {% block content %}
-        <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
-        {% endblock %}
-    </div>
+            <!-- Page Content -->
+            {% block content %}
+            <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
+            {% endblock %}
+        </div>
+    </section>
 </main>
 
-<footer>
-    {% block copyright %}&copy; 2024 Chirp Check. All rights reserved.{% endblock %}
+<footer class="footer mt-auto py-3 dark-bg">
+    <p class="m-0 text-center">{% block copyright %}&copy; 2024 Chirp Check. All rights reserved.{% endblock %}</p>
+    <p class="m-0 text-center">Follow us: <i class="fab fa-facebook-square ms-3"></i>
+        <i class="fa-brands fa-bluesky ms-3"></i>
+        <i class="fab fa-instagram-square ms-3"></i>
+        <i class="fab fa-youtube-square ms-3"></i>
+    </p>
 </footer>
 
 {% block scripts %}
