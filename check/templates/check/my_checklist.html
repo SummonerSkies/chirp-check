@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<section>
+<section aria-label="Detailed Checklist View">
     <div id="bird_png" class="custom_card">
         {{ check_list.list_name | upper }}
         
@@ -42,7 +42,7 @@
                 {% for bird in checklist.bird_set.all %}
                 <li>
                     <div class="bird-bird">
-                        <strong>{{ bird.bird_name }}</strong>
+                        <p><strong>{{ bird.bird_name | upper }}</strong></p>
 
                     <!-- Dropdown for Status and Number Seen -->
                         <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}"
