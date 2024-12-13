@@ -185,14 +185,15 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 - *Pagination*: Allow scrolling between different checklists direct from the detailed view, so users do not have to return to the home page each time.
 - *Images*: All users to upload images of birds seen.
 - *Sharing Checklists*: enable safe sharing view of checklists, so users can compare their sightings with other users.
+- *Update All*: Enables the user to update all bird entries on a checklist at the same time, rather than individually.
 
 ##### [ Back to Top ](#table-of-contents)
 
-# Technology Stack
+# Technology Used
 
-**Frontend Languages**: HTML5, CSS3, JavaScript, Bootstrap
-**Backend Languages**: Django (Python)
-**Project Planning**: Miroboard
+- **Frontend Languages**: HTML5, CSS3, JavaScript, Bootstrap
+- **Backend Languages**: Django (Python)
+- **Project Planning**: Miroboard
 
 **Django Packages**:
 - *Gunicorn*: WSGI server for deployment.
@@ -217,8 +218,6 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 ##### [ Back to Top ](#table-of-contents)
 
 # Testing and Validation
-
-
 
 ### HOME PAGE
 
@@ -275,7 +274,9 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 
 # Known Bugs
 
-List any known bugs here.
+- Validation Errors occur for the Sign Up page. This is a known issue caused by the AllAuth Django package, and is out of scope for correction.
+
+- Creating a new checklist with the same title as an existing one can cause an Error 500 error. This potentially looks to be due to a view error, and could not be resolved before the deadline due to lack of time.
 
 ##### [ Back to Top ](#table-of-contents)
 
