@@ -53,6 +53,10 @@ h1, h2 {
   font-family: 'Condiment', sans-serif;
 }
 
+.upper {
+  text-transform: uppercase;
+}
+
 .chirp-logo {
   font-family: 'Condiment', sans-serif;
   font-size: 45px;

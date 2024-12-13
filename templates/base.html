@@ -20,7 +20,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
-    
+
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,22 +86,22 @@
     </div>
 <!-- Content Section, linked to templates -->
 <main class="content">
-    <!-- Display messages -->
-    {% if messages %}
-        <div id="msg" class="messages" role="alert">
-            <ul>
-                {% for message in messages %}
-                    <li class="alert alert-{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
     <div class="container">
+        <!-- Display messages -->
+        {% if messages %}
+            <div id="msg" class="messages" role="alert">
+                <ul>
+                    {% for message in messages %}
+                        <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         <!-- Page Content -->
         {% block content %}
             <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
         {% endblock %}
-        </div>
+    </div>
 </main>
 
 <footer class="footer mt-auto py-3 dark-bg">
