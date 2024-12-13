@@ -3,18 +3,18 @@
 {% block content %}
 
 <section>
-    <div class="custom-card">
+    <div class="custom_card">
         <h2>{{ check_list.list_name | upper }}</h2>
         
         <div>
             <div class="checklist-details d-flex justify-content-between align-items-center">
                 <!-- Left side, centered vertically -->
-                <div class="left-side">
+                <div class="left_side">
                     <h3>{{ checklist.list_name }}</h3>
                 </div>
             
                 <!-- Right side -->
-                <div class="right-side">
+                <div class="right_side">
                     <p>LOCATION: {{ checklist.description }}</p>
                     <p>Date Created: {{ checklist.created_on }}</p>
                 </div>
@@ -25,10 +25,11 @@
 
 <!-- Bird Sightings Section -->
 <section>
-    <div class="custom-card">
-        <div class="d-flex justify-content-around">
+    <div class="center-wrapper">
+    <div class="bird_card">
+        <div class="d-flex justify-content-between">
             <div>
-                <h4>My Bird Sightings</h4>
+                <h4><u>My Bird Sightings</u></h4>
             </div>
             <div>
                 <p>
@@ -111,10 +112,11 @@
             {% endfor %}
         </ul>
     </div>
+    </div>
 </section>
 
 <!-- Button to return to checklist index -->
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-center">
     <div>
         <p>
             <a href="{% url 'chirpcheck:index' %}">

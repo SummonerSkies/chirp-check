@@ -2,10 +2,11 @@
 {% load static %}
 {% block content %}
 
-<h3>Delete A Checklist</h3>
-<div class="custom-card">
+<div class="d-flex justify-content-center">
+    <div class="card" style="padding-top: 2em;">
+        <h3 class="text-center"><u>Delete A Checklist</u></h3>
     <div>
-    <p>Are you sure you want to delete the following checklist?</p>
+        <p>Are you sure you want to delete the following checklist?</p>
     </div>
     <div>
         <ul>
@@ -27,10 +28,12 @@
                 {% csrf_token %}
                 <input
                     value="Yes, Delete!"
+                    class="btn btn-danger"
                     type="submit">
                 <input
                     value="Cancel"
                     type="button"
+                    class="btn btn-secondary"
                     onclick="location.href='{% url 'chirpcheck:index' %}'">
             </form>
         </div>

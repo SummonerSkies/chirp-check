@@ -90,7 +90,7 @@
     </div>
     <!-- Display messages -->
     {% if messages %}
-        <div id="msg" class="messages alert" role="alert">
+        <div id="msg" class="messages" role="alert">
             <ul>
                 {% for message in messages %}
                     <li class="alert alert-{{ message.tags }}">{{ message }}</li>
@@ -104,7 +104,6 @@
             <i class="fa-solid fa-crow" style="font-size:60px;color:black"></i>
         {% endblock %}
         </div>
-    </div>
 </main>
 
 <footer class="footer mt-auto py-3 dark-bg">
