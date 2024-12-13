@@ -8,17 +8,18 @@
         <div class="card-body text-center">
           <h3>Updating {{ checklist.list_name }}!</h3>
         </div>
-        <div>
-            <form method="POST" class="text-align">
-                {% csrf_token %}
-                {{ checklist_form.as_p }}
+            <div>
+                <form method="POST" class="text-align">
+                    {% csrf_token %}
+                    {{ checklist_form.as_p }}
+                    <div style="text-align: center;">
+                        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-feather"></i> Save Your Update!</button>
+                    </div>
+                </form>
                 <div style="text-align: center;">
-                    <button class="btn btn-primary" type="submit"><i class="fa-solid fa-feather"></i> Save Your Update!</button>
-                </div>
-            </form>
-            <div style="text-align: center;">
-                <a href="{% url 'chirpcheck:index' %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</a>
-            </div>    
+                    <a href="{% url 'chirpcheck:index' %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</a>
+                </div>    
+            </div>
         </div>
     </div>
 </div>

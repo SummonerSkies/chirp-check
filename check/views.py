@@ -33,7 +33,7 @@ def my_checklist(request, id):
     if checklist.user != request.user:
         messages.warning(
             request, "You are not allowed to view this checklist.")
-        return redirect('login.html')
+        return redirect('chirpcheck:index')
 
     birds = Bird.objects.filter(check_list=checklist)
     context = {'checklist': checklist, 'birds': birds}

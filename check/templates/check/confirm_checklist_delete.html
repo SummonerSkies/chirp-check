@@ -22,20 +22,21 @@
         </ul>
     </div>
 
-    <div>
-        <div class="d-flex justify-content-center">
-            <form method="POST">
-                {% csrf_token %}
-                <input
-                    value="Yes, Delete!"
-                    class="btn btn-danger"
-                    type="submit">
-                <input
-                    value="Cancel"
-                    type="button"
-                    class="btn btn-secondary"
-                    onclick="location.href='{% url 'chirpcheck:index' %}'">
-            </form>
+        <div>
+            <div class="d-flex justify-content-center">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input
+                        value="Yes, Delete!"
+                        class="btn btn-danger"
+                        type="submit">
+                    <input
+                        value="Cancel"
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="location.href='{% url 'chirpcheck:index' %}'">
+                </form>
+            </div>
         </div>
     </div>
 </div>
