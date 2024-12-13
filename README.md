@@ -218,47 +218,36 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 
 # Testing and Validation
 
-### HOME PAGE
+| Test              | Result |
+| :---------------- | :------: |
+| Create user account    | Pass |
+| Log in             | Pass |
+| Log out           | Pass |
+| Superuser can access admin page | Pass |
+| Non Superusers cannot access admin page | Pass |
+| Users cannot access each others' checklists | Pass |
 
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
 
-### ABOUT PAGE
+### Task Tests
 
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
+| Test              | Result |
+| :---------------- | :------: |
+| User can create a checklist   | Pass |
+| User can edit their created checklist | Pass |
+| User can delete their created checklist | Pass |
+| Users cannot edit another user's checklist | Pass |
+| Users cannot delete another user's checklist | Pass |
+| User can view details for a specific checklist | Pass |
+| User cannot view details for anotyher user's specific checklist | Pass |
+| User can add a bird to the checklist | Pass |
+| User can delete a bird on the checklist | Pass |
+| User can change the status of a bird on the checklist | Pass |
+| User can add how many birds were seen | Pass |
+| User cannot add the same bird twice to the same checklist | Pass |
+| User cannot add birds to another user's checklist | Pass |
+| User cannot update birds on another user's checklist | Pass |
+| User cannot delete a bird from another user's checklist | Pass |
 
-### PROFILE PAGE
-
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
-
-### LOGIN PAGE
-
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
-
-### REGISTRATION PAGE
-
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
-
-### LOGOUT PAGE
-
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
-
-### SECURITY
-
- Test                                      Result 
--------------------------------------------------
- Test description                         Pass   
 
 - I used the [W3 HTML Validator](https://validator.w3.org/#validate_by_input+with_options) to check the HTML on each of my site pages by Direct Input. I have resolved all necessary errors (extra and missing Div tags, and button and a href linking interactions). However there are some error messages remaning due to the use of AllAuth's templates for sign-up forms. These are a known bug (see Bugs section).
 
