@@ -2,6 +2,8 @@
 
 # Welcome to Chirp Check!
 
+![Am I Responsive? Deployed Site Image](doc/responsive_chirpcheck.png)
+
 ## The Bird Watching Checklist
 ### Chirp Check is a light-weight checklist app that allows you to track how many birds you see at a given location. Whether you're out on a hike, down by the shore or working in the garden at home, this app is there for you!
 
@@ -34,11 +36,7 @@ Built by Emma Sadler.
 
 ## Database Planning
 
-Using 
-
-Describe your database planning process and include diagrams if available.
-![Miroboard Planning Part 1](doc/cc_iteration01.png)
-![Miroboard Planning Part 2](doc/cc_iteration02.png)
+I then wrote down how the relationships would work together, consulting with my tutor Kevin on what would and would not be necessary for each model.
 ![Planning the Database Entity Relationship Diagram](doc/cc-planning01.png)
 
 ## UX Design
@@ -60,13 +58,39 @@ This app is for bird watchers. It is designed to make simple checklists with a n
 
 # Agile Development
 
-Describe your agile development process and link to your Kanban board or project management tool.
+Using Miroboard, I first iterated on the bird watching app, its use cases and what would be needed for such an app.
+
+![Miroboard Planning Part 1](doc/cc_iteration01.png)
+
+I then pared this down to its most simple form, to ensure that key CRUD functionality could be obtained at the minimum viable product level.
+
+![Miroboard Planning Part 2](doc/cc_iteration02.png)
+
+Once I started the Chirp Check app in earnest, I made a [project board](https://github.com/users/SummonerSkies/projects/4) on GitHub's Project site.
+
+- Deployed Project Board: https://github.com/users/SummonerSkies/projects/4
+
+![GitHub Project Board for Chirp Check](doc/cc-projectboard.PNG)
 
 ### User Stories Overview
 
-List your user stories
-1. Title [User Story Title]
-   - As a [user type], I can [action] so that [goal].
+1. **Account Registration**
+   - As an App User I can register an account so that I can make my own checklists.
+2. **View List of Checklists**
+   - As an app user, I can view recent bird watching checklists so that I can select which list I want to view.
+3. **Open a Checklist**
+   - As an App User I can click on a specific checklist so that I can view the list of birds seen.
+4. **Manage a Checklist**
+   - As an app user I can create, read, update and delete checklists so that I can manage my checklists how I want.
+5. **Checklist Contents**
+   - As an App User I can add, modify and delete birds from the checklist, including the number seen, so that I have an accurate recording of the birds I saw.
+6. **Landing Page**
+   - As a Site User, I can load the landing page so that I can read about the site.
+7. **Navigation**
+   - As a Site User I can click the appropriate naviagtion links so that I can access different sections of the website and app.
+8. **Login Status**
+   - As an app user I can see my logged in status so that I am aware if I am logged in or out of the website.
+
 
 ##### [ Back to Top ](#table-of-contents)
 
@@ -116,11 +140,29 @@ List and describe the features you plan to implement in the future.
 
 # Technology Stack
 
-List the technologies used in your project.
+**Frontend Languages**: HTML5, CSS3, JavaScript, Bootstrap
+**Backend Languages**: Django (Python)
+**Project Planning**: Miroboard
 
-- Technology 1
-- Technology 2
-- Technology 3
+**Django Packages**:
+- *Gunicorn*: WSGI server for deployment.
+- *Dj_database_url*: Database URL parsing.
+- *Psycopg2*: PostgreSQL adapter for Python.
+- *Allauth*: Authentication and account management.
+
+**Frameworks, Libraries, and Programs Used:**
+- *Django*: Python web framework used for backend development.
+- *Bootstrap*: Front-end framework for responsive design.
+- *JavaScript*: Used for dynamic and interactive components.
+- *CSS*: Used for styling HTML5.
+- *GIT*: Used git for version control using the gitpod terminal.
+- *Github*: The Project's code was stored in github.
+- *Heroku*: Used to deploy the live project.
+- *PEP8*: Python code was validated using PEP8.
+- *W3C HTML*: Validated HTML code using W3C'S HTML validator.
+- *W3C CSS*: Validated CSS code using W3C'S CSS validator.
+- *Javascript Validator*: Validated JavaScript code using site24x7.com's Javascript validator.
+- *Chrome Devtools*: Used devtools on google chrome to test website responsiveness and to check for bugs.
 
 ##### [ Back to Top ](#table-of-contents)
 
