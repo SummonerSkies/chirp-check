@@ -14,43 +14,40 @@
             </div>
             <div class="card-body">
                 <!-- Checklist Table Headings -->
-                <table class="table table-striped table-hover align-middle">
-                    <thead class="chirp-checklist th">
-                        <tr>
-                            <th>Checklist</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th> </th>
-                            <th> </th>
-                        </tr>
-                    </thead>
-                    <!-- Table body displays checklist data -->
-                    <tbody>
-                        {% for checklist in object_list %}
-                        <tr>
-                            <td>
-                                <strong> <a role="button"
-                                    onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">{{ checklist.list_name }}</a></strong>
-                            </td>
-                            <td>{{ checklist.description }}</td>
-                            <td>{{ checklist.created_on|date:"F j, Y, g:i a" }}</td>
-                            <td>
-                                <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}" class="btn btn-primary"><i class="fa-solid fa-feather"></i> Edit</a>
-                            </td>
-                            <td>
-                                <a
-                                    href="{% url 'chirpcheck:delete_checklist' checklist.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
-                            </td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="5" class="text-center text-muted">
-                                <h4>You have no lists!</h4>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="d-none d-md-block">
+                    <div class="row fw-bold border-bottom py-2">
+                        <div class="col">Checklist</div>
+                        <div class="col">Location</div>
+                        <div class="col">Date</div>
+                        <div class="col">Actions</div>
+                    </div>
+                </div>
+                <!-- Table body displays checklist data -->
+                {% for checklist in object_list %}
+                <div class="d-flex flex-wrap border-bottom py-2">
+                    <div class="col-12 col-md">
+                        <strong>
+                            <a role="button" onclick="location.href='{% url 'chirpcheck:checklist' checklist.id %}'">
+                                {{ checklist.list_name }}
+                            </a>
+                        </strong>
+                    </div>
+                    <div class="col-12 col-md">{{ checklist.description }}</div>
+                    <div class="col-12 col-md">{{ checklist.created_on|date:"M d, Y" }}</div>
+                    <div class="col-12 col-md d-flex gap-2">
+                        <a href="{% url 'chirpcheck:edit_checklist' checklist.id %}" class="btn btn-primary btn-sm">
+                            <i class="fa-solid fa-feather"></i> Edit
+                        </a>
+                        <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}" class="btn btn-danger btn-sm">
+                            <i class="fa-solid fa-trash-can"></i> Delete
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="text-center text-muted py-3">
+                    <h4>You have no lists!</h4>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

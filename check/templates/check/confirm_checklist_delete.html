@@ -17,7 +17,7 @@
                 Location: <b>{{ checklist.description }}</b>
             </li>
             <li>
-                Date Created: <b>{{ checklist.created_on }}</b>
+                Date Created: <b>{{ checklist.created_on | date:"M d, Y" }}</b>
             </li>
         </ul>
     </div>

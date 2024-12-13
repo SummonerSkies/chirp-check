@@ -16,7 +16,7 @@
                 <!-- Right side -->
                 <div class="right_side">
                     <p>LOCATION: {{ checklist.description }}</p>
-                    <p>Date Created: {{ checklist.created_on }}</p>
+                    <p>Date Created: {{ checklist.created_on | date:"M d, Y" }}</p>
                 </div>
             </div>
         </div>

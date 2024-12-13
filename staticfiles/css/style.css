@@ -30,13 +30,12 @@ body {
   background-color: #7fc0e6;
   color: #1c4b8d;
   font-family: 'Lato', sans-serif;
-  margin: 1rem;
   min-height: 100vh;
   width: 100%;
   background: url(https://res.cloudinary.com/dahsksyzw/image/upload/v1734052195/black-capped-chickadee-hi_clker_ggmnco.png);
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: left center;
+  background-position: left top;
+  flex-grow: 1;
 }
 
 main {
@@ -44,6 +43,10 @@ main {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+}
+
+#login-confirm{
+  magrin: 0%;
 }
 
 h1, h2 {
@@ -212,11 +215,6 @@ footer {
   bottom: 1.5rem;
   padding: 20px 0;
   width: 100%;
-  height: 2.5rem;
   justify-content: space-evenly;
   list-style-type: none;
-}
-
-/* For screens 550px or smaller */
-@media (max-width: 550px) {
 }

@@ -17,6 +17,10 @@
     <!-- Page Title -->
     <title>Chirp Check! The Birdwatching Checklist App</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +38,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="d-flex flex-column min-vh-100 main-bg body-pad">
+<body class="d-flex flex-column main-bg body-pad">
 
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-sm navbar-light">
@@ -72,9 +76,6 @@
         </div>
     </div>
 </nav>
-
-<!-- Content Section, linked to templates -->
-<main class="content">
     <!-- Logged In Messages -->
     <div id="login-confirm">
         {% if user.is_authenticated %}
@@ -83,11 +84,8 @@
             <p class="text-end m-3">You are not logged in to Chirp Check!</p>
         {% endif %}
     </div>
-    <div class="d-flex justify-content-center">
-        <h1>
-            <i class="fa-solid fa-crow" style="font-size:45px"></i> Chirp Check! <i class="fa-solid fa-crow" style="font-size:45px"></i>
-        </h1>
-    </div>
+<!-- Content Section, linked to templates -->
+<main class="content">
     <!-- Display messages -->
     {% if messages %}
         <div id="msg" class="messages" role="alert">
@@ -108,11 +106,11 @@
 
 <footer class="footer mt-auto py-3 dark-bg">
     <p class="m-0 text-center">{% block copyright %}&copy; 2024 Chirp Check.{% endblock %}</p>
-    <p class="m-0 text-center">Follow us:<br><i class="fab fa-facebook-square ms-3"></i>
+    <div class="m-0 text-center">Follow us:<br><i class="fab fa-facebook-square ms-3"></i>
         <i class="fa-brands fa-bluesky ms-3"></i>
         <i class="fab fa-instagram-square ms-3"></i>
         <i class="fab fa-youtube-square ms-3"></i>
-    </p>
+    </div>
 </footer>
 
 {% block scripts %}
