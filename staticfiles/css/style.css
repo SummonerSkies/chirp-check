@@ -91,19 +91,50 @@ li {
 
 /* bird list styling */
 
-.checklist-details {
+.custom_card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+  max-height: 150px;
+  box-sizing: border-box;
   display: flex;
-  align-items: center; /* Vertically centers the left-side content */
+  flex-direction: column;
+}
+
+/* Checklist details layout */
+.checklist_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 1em;
 }
 
-.left-side {
-  flex: 1; /* Left side takes up remaining space */
-  text-align: left; /* Ensures text on the left side is aligned to the left */
-} 
+.left_side {
+  flex: 1;
+  text-align: left;
+}
 
 .right-side {
-  text-align: right; /* Aligns text on the right side */
+  text-align: right;
+}
+
+.bird_card {
+  background-color: #fff;
+  width: 90%;
+  max-width: 600px;
+  max-height: 200px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 /* birds number_seen styling */

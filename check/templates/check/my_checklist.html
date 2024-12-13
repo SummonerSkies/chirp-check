@@ -4,7 +4,7 @@
 
 <section>
     <div class="custom_card">
-        <h2>{{ check_list.list_name | upper }}</h2>
+        {{ check_list.list_name | upper }}
         
         <div>
             <div class="checklist-details d-flex justify-content-between align-items-center">
@@ -26,56 +26,53 @@
 <!-- Bird Sightings Section -->
 <section>
     <div class="center-wrapper">
-    <div class="bird_card">
-        <div class="d-flex justify-content-between">
-            <div>
-                <h4><u>My Bird Sightings</u></h4>
+        <div class="bird_card">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h4><u>My Bird Sightings</u></h4>
+                </div>
+                <div>
+                    <p>
+                        <a href="{% url 'chirpcheck:add_bird' checklist.id %}" class="btn btn-primary"><i class="fa-solid fa-crow"></i> Add a Bird!</a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <p>
-                    <a href="{% url 'chirpcheck:add_bird' checklist.id %}">
-                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-crow"></i> Add a
-                            Bird!</button>
-                    </a>
-                </p>
-            </div>
-        </div>
-
         <!-- Button to Add a Bird to the checklist -->
-        <ul class="bird-container" aria-label="Bird List">
-            {% for bird in checklist.bird_set.all %}
-            <li>
-                <div class="bird-bird">
-                    <strong>{{ bird.bird_name }}</strong>
+            <ul class="bird-container" aria-label="Bird List">
+                {% for bird in checklist.bird_set.all %}
+                <li>
+                    <div class="bird-bird">
+                        <strong>{{ bird.bird_name }}</strong>
 
                     <!-- Dropdown for Status and Number Seen -->
-                    <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}"
-                        style="display: inline;">
-                        {% csrf_token %}
+                        <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}"
+                            style="display: inline;">
+                            {% csrf_token %}
 
                         <!-- Status Dropdown -->
-                        <select name="status" id="status-{{ bird.id }}">
-                            <option value="Not Seen" {% if bird.status == "Not Seen" %}selected{% endif %}>Not Seen
-                            </option>
-                            <option value="Spotted" {% if bird.status == "Spotted" %}selected{% endif %}>Spotted
-                            </option>
-                        </select>
+                            <select name="status" id="status-{{ bird.id }}">
+                                <option value="Not Seen" {% if bird.status == "Not Seen" %}selected{% endif %}>Not Seen
+                                </option>
+                                <option value="Spotted" {% if bird.status == "Spotted" %}selected{% endif %}>Spotted
+                                </option>
+                            </select>
 
                         <!-- Update Status Button -->
-                        <button type="submit" class="update-status-btn">Update</button>
-                        <br />
+                            <button type="submit" class="update-status-btn btn btn-info">Update</button>
+                            <br>
                         <!-- Number Seen Input -->
-                        Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen"
-                            id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0"
-                            {% if bird.status == "Not Seen" %}disabled{% endif %}>
-                    </form>
+                            Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen"
+                                id="number-seen-{{ bird.id }}" value="{{ bird.number_seen }}" min="0"
+                                {% if bird.status == "Not Seen" %}disabled{% endif %}>
+                        </form>
 
                     <!-- Button to trigger the delete bird model from checklist -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal-{{ bird.id }}">
-                        <i class="fa-solid fa-trash-can"></i> Delete Bird
-                    </button>
-
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal-{{ bird.id }}">
+                            <i class="fa-solid fa-trash-can"></i> Delete Bird
+                        </button>
+                    </div>
                     <!-- Bootstrap Modal for confirming the deletion -->
                     <div class="modal fade" id="deleteModal-{{ bird.id }}" tabindex="-1"
                         aria-labelledby="deleteModalLabel-{{ bird.id }}" aria-hidden="true">
@@ -119,16 +116,13 @@
 <div class="d-flex justify-content-center">
     <div>
         <p>
-            <a href="{% url 'chirpcheck:index' %}">
-                <button class="btn btn-info"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</button>
-            </a>
+            <a href="{% url 'chirpcheck:index' %}" class="btn btn-info"><i class="fa-solid fa-arrow-left"></i> Back to My Checklists</a>
         </p>
     </div>
         <!-- Button to delete the checklist -->
     <div>
         <p>
-            <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}">
-                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i> Delete this Checklist</button></a>
+            <a href="{% url 'chirpcheck:delete_checklist' checklist.id %}" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i> Delete this Checklist</a>
         </p>
     </div>
 </div>
