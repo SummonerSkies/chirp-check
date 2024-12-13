@@ -36,7 +36,9 @@ Built by Emma Sadler.
 
 ## Database Planning
 
-I then wrote down how the relationships would work together, consulting with my tutor Kevin on what would and would not be necessary for each model.
+I started with the knowledge I would have 3 core components to my app: The User, the Checklist and Birds. I then wrote down a relationship diagram, exploring how these would work together. I also consulting with my Subject Matter Expert tutor Kevin Loughrey on what would and would not be necessary for each model in order to keep it as streamlined as possible.
+
+
 ![Planning the Database Entity Relationship Diagram](doc/cc-planning01.png)
 
 ## UX Design
