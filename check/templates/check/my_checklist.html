@@ -26,7 +26,7 @@
 <!-- Bird Sightings Section -->
 <section>
     <div class="center-wrapper">
-        <div class="bird_card">
+        <div class="card">
             <div class="d-flex justify-content-between">
                 <div>
                     <h4><u>My Bird Sightings</u></h4>
@@ -48,7 +48,6 @@
                         <form method="POST" action="{% url 'chirpcheck:update_bird' checklist.id bird.id %}"
                             style="display: inline;">
                             {% csrf_token %}
-
                         <!-- Status Dropdown -->
                             <select name="status" id="status-{{ bird.id }}">
                                 <option value="Not Seen" {% if bird.status == "Not Seen" %}selected{% endif %}>Not Seen
@@ -59,6 +58,7 @@
 
                         <!-- Update Status Button -->
                             <button type="submit" class="update-status-btn btn btn-info">Update</button>
+                            <br>
                             <br>
                         <!-- Number Seen Input -->
                             Number of {{bird.bird_name}}s Seen: <input type="number" name="number_seen"
