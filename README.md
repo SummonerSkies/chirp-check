@@ -60,7 +60,13 @@ This app is for bird watchers. It is designed to make simple checklists with a n
 
 # Agile Development
 
-Using Miroboard, I first iterated on the bird watching app, its use cases and what would be needed for such an app.
+For the development of Chirp Check, I adopted Agile methodologies in order to ensure an efficient iteration process and progress throughout the project's lifecycle. This involved the use of Kanban boards: one for working out the app, hosted on Miroboard, and the second for the user stories, hosted on GitHub Projects.
+
+- [Project Ideation Miroboard](https://miro.com/app/board/uXjVLGFHIHI=/?share_link_id=775372797855)
+- [Chirp Check GitHub Project Board](https://github.com/users/SummonerSkies/projects/4)
+
+
+Using Miroboard, I first iterated on possible project ideas, before settling on a bird watching app. This was then iterated on, looking at its use cases and what would be needed for using such an app.
 
 ![Miroboard Planning Part 1](doc/cc_iteration01.png)
 
@@ -68,9 +74,7 @@ I then pared this down to its most simple form, to ensure that key CRUD function
 
 ![Miroboard Planning Part 2](doc/cc_iteration02.png)
 
-Once I started the Chirp Check app in earnest, I made a [project board](https://github.com/users/SummonerSkies/projects/4) on GitHub's Project site.
-
-- Deployed Project Board: https://github.com/users/SummonerSkies/projects/4
+Once I started the Chirp Check repository, I made a project board on GitHub's Project site in order to plan out the user stories.
 
 ![GitHub Project Board for Chirp Check](doc/cc-projectboard.PNG)
 
@@ -98,39 +102,42 @@ Once I started the Chirp Check app in earnest, I made a [project board](https://
 
 # Features Implemented
 
-List and describe the features implemented in your project.
-
 ## Home Page
-- Feature 1
-- Feature 2
+- For **logged in users**, the home page loads immediately to show their current checklists. 
+- There is a call to action button visible prompting to create a new checklist.
+- There is a navigation bar at the top directing to the home page or to log out.
+- They can see the name of their checklists, along with the linked location, time of creation, and the options to edit and delete the checklist.
+- Clicking on the name of the checklist will take them through to the specific details.
+- The user must be logged in to view, edit or delete any checklists.
+- Messages for success and failure appear at the top of the app page.
 
-## About Page
-- Feature 1
-- Feature 2
-
-## Profile Page
-- Feature 1
-- Feature 2
+- For **logged out users**, the site has a welcome message and directs to the sign in screen.
+   - If they are not registered for Chirp Check, they are directed to sign up instead and provided a link.
 
 ## Login Page
-- Feature 1
-- Feature 2
+- This is provided on the home page when logged out.
+- Authenticated login is required, requesting a username and password.
 
 ## Registration Page
-- Feature 1
-- Feature 2
+- A clear signup page is provided on its own page.
+   - This page is not visible to **logged in users**.
+- The Signup button is a bright colour and positioned in easy reach.
+- Clear instructions are given for signing up, including a username and password.
+   - The user can also register their email address at the same time, this is optional.
+- They will be unable to complete registration if the listed requirements are not met.
 
 ## Logout Page
-- Feature 1
-- Feature 2
+- This is accessed in the top-right corner of the Nav bar.
+- Users are prompted to confirm they wish to log out.
+- They receive a message confirming successful logout.
 
 ### Responsive Design
-- Feature 1
-- Feature 2
+- The site utilizes flexbox to adjust to meet the size requirements of a user's device.
 
 ## Additional Security Features
-- Feature 1
-- Feature 2
+- Unauthorised users will receive an error message for attempts to access or change a checklist that does not belong to them.
+- Unauthorised users will receive an error message for attempts to access or change any information relating to birds on a checklist that does not belong to them.
+- Checklists are only visible to logged in users at all times.
 
 ##### [ Back to Top ](#table-of-contents)
 
@@ -170,7 +177,7 @@ List and describe the features you plan to implement in the future.
 
 # Testing and Validation
 
-Describe your testing and validation process.
+
 
 ### HOME PAGE
 
@@ -213,6 +220,15 @@ Describe your testing and validation process.
  Test                                      Result 
 -------------------------------------------------
  Test description                         Pass   
+
+- I used the [W3 HTML Validator](https://validator.w3.org/#validate_by_input+with_options) to check the HTML on each of my site pages by Direct Input. I have resolved all necessary errors (extra and missing Div tags, and button and a href linking interactions). However there are some error messages remaning due to the use of AllAuth's templates for sign-up forms. These are a known bug (see Bugs section).
+
+- I used the [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) to check my CSS script by Direct Input. I found no errors!
+
+- I used the [JavaScript Validator](https://www.site24x7.com/tools/javascript-validator.html) at site24x7.com to review the one piece of JavaScript for my project, which passed without issue.
+
+- I used the [CI Python Linter](https://pep8ci.herokuapp.com/) to check all python scripts for models, views and forms. The primary errors encountered were lines that were too long, missing blank space lines between classes, and excess spaces on blank lines. These were all corrected.
+
 
 ##### [ Back to Top ](#table-of-contents)
 
