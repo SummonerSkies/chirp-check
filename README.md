@@ -115,7 +115,7 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
    - If they are not registered for Chirp Check, they are directed to sign up instead and provided a link.
 
 ## Login Page
-- This is provided on the home page when logged out.
+- This is provided on and doubles as the home page when logged out.
 - Authenticated login is required, requesting a username and password.
 
 ## Registration Page
@@ -125,6 +125,44 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 - Clear instructions are given for signing up, including a username and password.
    - The user can also register their email address at the same time, this is optional.
 - They will be unable to complete registration if the listed requirements are not met.
+
+## Add Checklist
+- Allows user to add a new checklist.
+- They can set the name and location.
+- Successful completion redirects them back to the home page. A green message pop-up confirms they have made a new list.
+
+## Edit Checklist
+- Allows user to edit an existing checklist.
+- They can change the name and location details.
+- Successful completion redirects them back to the home page. A green message pop-up confirms the update.
+
+## Delete Checklist
+- Allows user to delete an existing checklist.
+- They receive a prompt to confirm they wish to delete the checklist; the details for the checklist are provided.
+- Successful completion redirects them back to the home page. A green message pop-up confirms the deletion.
+- There is the option to cancel, which takes them back to the home page with no further action taken.
+
+## Checklist View
+- This page shows the name of the list, location and creation date.
+- This page enables them to add, update and delete birds from their checklist.
+- They can also choose to delete the checklist from this page.
+
+## Add Bird
+- This opens a new page, which prompts for the bird's name.
+- They can set the status for the bird to Seen or Not Seen.
+- They can also set how many birds they have seen here.
+
+## Update Bird
+- This is done on the detailed view. The user can change the status using the toggle to set if they have Seen or Not Seen a specific bird.
+- When a bird is Not Seen, this disables the option to change the number of birds seen.
+- When a bird is Seen, this disables the option to change the number of birds seen.
+- The Update button must be pressed to confirm these changes.
+
+## Delete Bird
+- This deletes the entire bird record, including status and how many seen.
+- A red pop-up warning message appears to confirm that they wish to delete the bird.
+- There is an option to cancel the delete request on the pop-up.
+- Once deleted, the bird is removed from the checklist. A green message pop-up confirms the deletion.
 
 ## Logout Page
 - This is accessed in the top-right corner of the Nav bar.
@@ -143,7 +181,10 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 
 # Future Features
 
-List and describe the features you plan to implement in the future.
+- *About Page*: Additional information about the app, showcasing uses in the field and refer to birding resources.
+- *Pagination*: Allow scrolling between different checklists direct from the detailed view, so users do not have to return to the home page each time.
+- *Images*: All users to upload images of birds seen.
+- *Sharing Checklists*: enable safe sharing view of checklists, so users can compare their sightings with other users.
 
 ##### [ Back to Top ](#table-of-contents)
 
