@@ -39,6 +39,13 @@ body {
   background-position: left center;
 }
 
+main {
+  flex: 1 0 auto;
+  margin-top: 47px;
+  display: flex;
+  flex-direction: column;
+}
+
 h1, h2 {
   font-family: 'Condiment', sans-serif;
 }
@@ -74,10 +81,10 @@ h1, h2 {
   color: #721c24;
 }
 
-
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
+
 
 /* general body styling */
 div {
@@ -188,6 +195,14 @@ li {
   width: 20rem;  /* Specify a fixed width for the card */
   padding: 1.5rem;  /* Add some padding inside the card */
   background-color: #fff;
+}
+
+/* sign-in page responsiveness for smaller screens */
+
+#intro, #sign-in {
+  width: 90%;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
 /* Footer */

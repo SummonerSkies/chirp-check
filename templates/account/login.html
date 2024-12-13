@@ -5,15 +5,21 @@
 {% endblock %}
 
 {% block content %}
-<div id="bird_png" class="signin_container text-center">
-    <div id="intro" class="card signout-card">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <p>{% blocktrans %}Welcome to <strong>Chirp Check</strong>, the bird watching checklist app!<br>Whether you're out on a hike, down by the shore or working in the garden at home, this app is there for you!</p>
-            <p>To chirp a new checklist or update an existing one, please log in!</p>
-            <p>If you have not created a Chirp Check account yet, then <strong><a class="link" href="{{ signup_url }}">sign up here</a></strong> first!{% endblocktrans %}</p>
+<section id="intro">
+    <div class="signin_container text-center">
+        <div id="intro" class="card signout-card">
+            <div class="col-md-8 mt-3 offset-md-2">
+                <p>{% blocktrans %}Welcome to <strong>Chirp Check</strong>, the bird watching checklist app!
+                <br>Whether you're out on a hike, down by the shore or working in the garden at home, this app is there for you!</p>
+                <p>To chirp a new checklist or update an existing one, please log in!</p>
+                <p>If you have not created a Chirp Check account yet, then 
+                    <strong><a class="link" href="{{ signup_url }}">sign up here</a></strong> first!{% endblocktrans %}</p>
+            </div>
         </div>
     </div>
-    <div id="sign_in">
+</section>
+<section id="sign-in" class="d-flex justify-content-center">
+    <div class="card signout-card">
         <h3>{% trans "Sign In" %}</h3>
         <div class="col-md-8 mt-3 offset-md-2">
             <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -23,10 +29,10 @@
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-light right" type="submit">{% trans "Sign In" %} <i class="fa-solid fa-feather"></i></button>
+                    <button class="btn btn-primary right" type="submit">{% trans "Sign In" %} <i class="fa-solid fa-feather"></i></button>
                 </div>
             </form>
         </div>
     </div>
-</div>
+</section>
 {% endblock content %}
