@@ -225,7 +225,6 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 | Log out           | Pass |
 | Superuser can access admin page | Pass |
 | Non Superusers cannot access admin page | Pass |
-| Users cannot access each others' checklists | Pass |
 
 
 ### Task Tests
@@ -235,10 +234,11 @@ Once I started the Chirp Check repository, I made a project board on GitHub's Pr
 | User can create a checklist   | Pass |
 | User can edit their created checklist | Pass |
 | User can delete their created checklist | Pass |
+| Users cannot access each others' checklists | Pass |
 | Users cannot edit another user's checklist | Pass |
 | Users cannot delete another user's checklist | Pass |
 | User can view details for a specific checklist | Pass |
-| User cannot view details for anotyher user's specific checklist | Pass |
+| User cannot view details for another user's specific checklist | Pass |
 | User can add a bird to the checklist | Pass |
 | User can delete a bird on the checklist | Pass |
 | User can change the status of a bird on the checklist | Pass |
