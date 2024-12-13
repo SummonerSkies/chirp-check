@@ -1,17 +1,17 @@
-# ![Project Logo](staticimagestplogo.png)
+# ![Project Logo](/doc/cc_logo.png)
 
-# Welcome to [Project Name]
+# Welcome to Chirp Check!
 
-## Project Description
-### [Project Name] is a [brief description of your project]
+## The Bird Watching Checklist
+### Chirp Check is a light-weight checklist app that allows you to track how many birds you see at a given location. Whether you're out on a hike, down by the shore or working in the garden at home, this app is there for you!
 
-The responsive website allows registered users to [list key functionalities]. Users who are not registered are free to [list additional functionalities]. 
+The responsive website app allows registered users to log in and create new checklists, or update an existing one with birds they have or have not seen.
 
-# [Link to Live Site](#)  
+# [Link to Deployed Site](https://chirp-check-ddace85f08c7.herokuapp.com/)  
 
-This project is created as the capstone project for the Code Institute's 16 week fullstack developer bootcamp.  
+This project has been created as the final portfolio project for Code Institute's 16 week fullstack developer bootcamp.  
 
-Built by [Your Name]
+Built by Emma Sadler.
 
 ---
 
@@ -34,8 +34,12 @@ Built by [Your Name]
 
 ## Database Planning
 
+Using 
+
 Describe your database planning process and include diagrams if available.
-![Database Entity Relationship Diagram](pathtoyourdiagram.png)
+![Miroboard Planning Part 1](doc/cc_iteration01.png)
+![Miroboard Planning Part 2](doc/cc_iteration02.png)
+![Planning the Database Entity Relationship Diagram](doc/cc-planning01.png)
 
 ## UX Design
 
@@ -43,15 +47,14 @@ Describe your database planning process and include diagrams if available.
 Provide a brief overview of the UX design and user experience goals.
 
 ### Site User
-Describe the primary users of your site.
+This app is designed for use by students, casual bird lovers, and more active watchers. 
 
 ### Goal
-Explain the main goal of your site.
+This app is for bird watchers. It is designed to make simple checklists with a name and location that can be easily edited. The user can then freely add and delete birds to their checklist, as well as indicate if a specific bird was seen or not, and how many were seen if they were. This is laid out clearly and without clutter.
 
 ## Wireframes
 
-Include your wireframes here.
-![Wireframe Example](pathtoyourwireframe.png)
+![Wireframe Example](doc/cc-app-planning.png)
 
 ##### [ Back to Top ](#table-of-contents)
 
@@ -218,12 +221,21 @@ List any known bugs here.
 
 ## Images
 
-- Source 1
-- Source 2
+- [Clker Clipart](https://www.clker.com/) - Free Clipart for public use; provided black capped chickadee background art.
+- [ColorMagic.app](https://colormagic.app/) - Used for site colour palette selection
+- [Icons8](https://icons8.com) - Feather FavIcon.
+- [Font Awesome](https://www.fontawesome.com) - Various icons.
+
 
 ## Code
 
-- Source 1
-- Source 2
+- [Stack Overflow](https://stackoverflow.com/) and [W3CSchools](https://www.w3schools.com/) - Django, CSS and HMTL code assistance.
+- [ChatGPT](https://chatgpt.com/) - Code troubleshooting and suggestions.
+- [GoogleFonts](https://fonts.google.com/) - provided the Lato and Condiment fonts. 
+- William Waldron-Hyden - code partner and sanity checker.
+- Course Facilitator David Calikes for his unwaving positivity, support and guidance.
+- Tutor Kevin Loughrey for his helpful SME sessions and constant support
+- My cohort peers for their support, sharing experience and best practices, and helping with trouble shooting issues.
+- Support Tutors John Reardon and Ruairidh MacArthur for all of their troubleshooting support.
 
 ##### [ Back to Top ](#table-of-contents)
